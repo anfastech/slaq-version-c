@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}SLAQ - AI-Powered Stuttering Analysis{% endblock %}
+
+{% block content %}
+<div class="min-h-[80vh] flex items-center">
+    <div class="w-full">
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                Welcome to <span class="text-brand-green">SLAQ</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                AI-Powered Stuttering Analysis & Therapy Tracking Platform
+            </p>
+            <p class="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
+                Record your speech, get instant AI-powered analysis, and track your progress over time.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="{% url 'core:register' %}" class="bg-brand-green text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition shadow-lg">
+                    Get Started Free
+                </a>
+                <a href="{% url 'core:login' %}" class="bg-white text-brand-green border-2 border-brand-green px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition">
+                    Login
+                </a>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="grid md:grid-cols-3 gap-8 mt-20">
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Record Audio</h3>
+                <p class="text-gray-600">Record your speech directly in the browser or upload pre-recorded files.</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">AI Analysis</h3>
+                <p class="text-gray-600">Get instant AI-powered analysis with detailed metrics and severity classification.</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Track Progress</h3>
+                <p class="text-gray-600">Monitor your improvement over time with detailed charts and reports.</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center mt-20 bg-brand-green text-white p-12 rounded-xl shadow-xl">
+            <h2 class="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
+            <p class="text-xl mb-8">Join SLAQ today and take control of your speech therapy.</p>
+            <a href="{% url 'core:register' %}" class="bg-white text-brand-green px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition inline-block">
+                Create Free Account
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

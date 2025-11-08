@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - SLAQ{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto">
+    <div class="bg-white rounded-xl shadow-lg p-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2">Create Your Account</h2>
+            <p class="text-gray-600">Start your speech therapy journey with SLAQ</p>
+        </div>
+
+        <!-- Registration Form -->
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            
+            <!-- Display form errors -->
+            {% if form.non_field_errors %}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <!-- Username -->
+            <div>
+                <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                    Username *
+                </label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.username.errors.0 }}</p>
+                {% endif %}
+                <p class="mt-1 text-xs text-gray-500">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address *
+                </label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.email.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- First Name -->
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                        First Name *
+                    </label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <p class="mt-1 text-sm text-red-600">{{ form.first_name.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                        Last Name *
+                    </label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <p class="mt-1 text-sm text-red-600">{{ form.last_name.errors.0 }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Date of Birth -->
+            <div>
+                <label for="{{ form.date_of_birth.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                    Date of Birth *
+                </label>
+                {{ form.date_of_birth }}
+                {% if form.date_of_birth.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.date_of_birth.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+                <label for="{{ form.phone_number.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number (Optional)
+                </label>
+                {{ form.phone_number }}
+                {% if form.phone_number.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.phone_number.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                    Password *
+                </label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.password1.errors.0 }}</p>
+                {% endif %}
+                <p class="mt-1 text-xs text-gray-500">Must be at least 8 characters and not entirely numeric.</p>
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+                <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                    Confirm Password *
+                </label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.password2.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+                <button type="submit" class="w-full bg-brand-green text-white py-3 px-4 rounded-lg hover:bg-green-600 transition font-semibold">
+                    Create Account
+                </button>
+            </div>
+        </form>
+
+        <!-- Login Link -->
+        <div class="mt-6 text-center">
+            <p class="text-gray-600">
+                Already have an account? 
+                <a href="{% url 'core:login' %}" class="text-brand-green hover:text-green-600 font-medium">
+                    Login here
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

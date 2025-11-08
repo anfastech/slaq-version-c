@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %}My Recordings - SLAQ{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Header -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">My Recordings 🎵</h1>
+                <p class="text-gray-600">View and manage your audio recordings</p>
+            </div>
+            <a href="{% url 'diagnosis:record' %}" class="mt-4 md:mt-0 inline-flex items-center bg-brand-green text-white px-6 py-3 rounded-lg hover:bg-green-600 transition font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                New Recording
+            </a>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="grid md:grid-cols-5 gap-4">
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+            <div class="text-2xl font-bold text-gray-900">{{ total_count }}</div>
+            <div class="text-sm text-gray-600">Total</div>
+        </div>
+        <div class="bg-green-50 rounded-lg shadow p-4 text-center">
+            <div class="text-2xl font-bold text-green-700">{{ completed_count }}</div>
+            <div class="text-sm text-green-600">Completed</div>
+        </div>
+        <div class="bg-yellow-50 rounded-lg shadow p-4 text-center">
+            <div class="text-2xl font-bold text-yellow-700">{{ pending_count }}</div>
+            <div class="text-sm text-yellow-600">Pending</div>
+        </div>
+        <div class="bg-blue-50 rounded-lg shadow p-4 text-center">
+            <div class="text-2xl font-bold text-blue-700">{{ processing_count }}</div>
+            <div class="text-sm text-blue-600">Processing</div>
+        </div>
+        <div class="bg-red-50 rounded-lg shadow p-4 text-center">
+            <div class="text-2xl font-bold text-red-700">{{ failed_count }}</div>
+            <div class="text-sm text-red-600">Failed</div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="bg-white rounded-lg shadow p-4">
+        <div class="flex flex-wrap gap-2">
+            <a href="{% url 'diagnosis:recordings_list' %}" class="px-4 py-2 rounded-lg {% if not status_filter %}bg-brand-green text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                All
+            </a>
+            <a href="?status=completed" class="px-4 py-2 rounded-lg {% if status_filter == 'completed' %}bg-brand-green text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                Completed
+            </a>
+            <a href="?status=pending" class="px-4 py-2 rounded-lg {% if status_filter == 'pending' %}bg-brand-green text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                Pending
+            </a>
+            <a href="?status=processing" class="px-4 py-2 rounded-lg {% if status_filter == 'processing' %}bg-brand-green text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                Processing
+            </a>
+            <a href="?status=failed" class="px-4 py-2 rounded-lg {% if status_filter == 'failed' %}bg-brand-green text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                Failed
+            </a>
+        </div>
+    </div>
+
+    <!-- Recordings Table -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        {% if recordings %}
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date & Time</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File Size</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Analysis</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    {% for recording in recordings %}
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">
+                                {{ recording.recorded_at|date:"M d, Y" }}
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                {{ recording.recorded_at|date:"g:i A" }}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {% if recording.duration_seconds %}
+                                {{ recording.duration_seconds|floatformat:1 }}s
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {% if recording.file_size_bytes %}
+                                {{ recording.file_size_bytes|filesizeformat }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            {% if recording.status == 'completed' %}
+                                <span class="px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Completed</span>
+                            {% elif recording.status == 'processing' %}
+                                <span class="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Processing</span>
+                            {% elif recording.status == 'pending' %}
+                                <span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Pending</span>
+                            {% elif recording.status == 'failed' %}
+                                <span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Failed</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                            {% if recording.status == 'completed' %}
+                                {% if recording.analysis %}
+                                    {% with severity=recording.analysis.severity %}
+                                        {% include 'components/severity_badge.html' %}
+                                    {% endwith %}
+                                {% else %}
+                                    <span class="text-gray-400">N/A</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="text-gray-400">-</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <div class="flex justify-end space-x-2">
+                                <a href="{% url 'diagnosis:recording_detail' recording.id %}" class="text-brand-green hover:text-green-600" title="View Details">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                </a>
+                                {% if recording.audio_file %}
+                                <a href="{{ recording.audio_file.url }}" download class="text-blue-600 hover:text-blue-800" title="Download">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                    </svg>
+                                </a>
+                                {% endif %}
+                                <form method="post" action="{% url 'diagnosis:delete_recording' recording.id %}" class="inline" onsubmit="return confirm('Are you sure you want to delete this recording?');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="text-red-600 hover:text-red-800" title="Delete">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-12">
+            <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+            </svg>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No recordings found</h3>
+            <p class="text-gray-600 mb-4">
+                {% if status_filter %}
+                    No recordings with status "{{ status_filter }}"
+                {% else %}
+                    Start by recording your first audio sample
+                {% endif %}
+            </p>
+            <a href="{% url 'diagnosis:record' %}" class="inline-block bg-brand-green text-white px-6 py-2 rounded-lg hover:bg-green-600 transition font-medium">
+                Record Now
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

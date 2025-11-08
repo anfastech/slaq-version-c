@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+
+{% block title %}Analysis Results - SLAQ{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto space-y-6">
+    <!-- Back Button -->
+    <div>
+        <a href="{% url 'diagnosis:recording_detail' recording.id %}" class="inline-flex items-center text-brand-green hover:text-green-600 font-medium">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Back to Recording
+        </a>
+    </div>
+
+    <!-- Analysis Header -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Analysis Results 📊</h1>
+                <p class="text-gray-600">Recorded on {{ recording.recorded_at|date:"F d, Y" }} at {{ recording.recorded_at|date:"g:i A" }}</p>
+            </div>
+            {% with severity=analysis.severity %}
+                <div class="text-right">
+                    <div class="text-sm text-gray-600 mb-2">Overall Severity</div>
+                    {% include 'components/severity_badge.html' %}
+                </div>
+            {% endwith %}
+        </div>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+            </div>
+            <div class="text-3xl font-bold text-gray-900 mb-2">{{ analysis.mismatch_percentage|floatformat:1 }}%</div>
+            <div class="text-sm text-gray-600">Mismatch Percentage</div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+            <div class="text-3xl font-bold text-gray-900 mb-2">{{ analysis.confidence_score|floatformat:2 }}</div>
+            <div class="text-sm text-gray-600">Confidence Score</div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+            <div class="text-3xl font-bold text-gray-900 mb-2">{{ total_events }}</div>
+            <div class="text-sm text-gray-600">Stutter Events</div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+            </div>
+            <div class="text-3xl font-bold text-gray-900 mb-2">{{ analysis.stutter_frequency|floatformat:1 }}</div>
+            <div class="text-sm text-gray-600">Frequency (per min)</div>
+        </div>
+    </div>
+
+    <!-- Transcripts Comparison -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Transcript Analysis</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <h3 class="font-semibold text-gray-900 mb-3 flex items-center">
+                    <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    Actual Transcript (What AI Heard)
+                </h3>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p class="text-gray-900 leading-relaxed">{{ analysis.actual_transcript }}</p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-gray-900 mb-3 flex items-center">
+                    <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Target Transcript (Expected)
+                </h3>
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <p class="text-gray-900 leading-relaxed">{{ analysis.target_transcript }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mismatched Characters -->
+        {% if analysis.mismatched_chars %}
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <h3 class="font-semibold text-yellow-900 mb-3 flex items-center">
+                <svg class="w-5 h-5 text-yellow-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Mismatched Characters ({{ analysis.mismatched_chars|length }})
+            </h3>
+            <div class="flex flex-wrap gap-2">
+                {% for char in analysis.mismatched_chars %}
+                <span class="px-3 py-1 bg-white border border-yellow-300 rounded text-sm font-mono">{{ char }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Stutter Events Timeline -->
+    {% if events %}
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Stutter Events Timeline</h2>
+        
+        <div class="space-y-4">
+            {% for event in events %}
+            <div class="border-l-4 {% if event.event_type == 'repetition' %}border-blue-500{% elif event.event_type == 'prolongation' %}border-purple-500{% elif event.event_type == 'block' %}border-red-500{% else %}border-gray-500{% endif %} pl-4 py-2">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="px-3 py-1 text-xs font-medium rounded-full
+                                {% if event.event_type == 'repetition' %}bg-blue-100 text-blue-800
+                                {% elif event.event_type == 'prolongation' %}bg-purple-100 text-purple-800
+                                {% elif event.event_type == 'block' %}bg-red-100 text-red-800
+                                {% else %}bg-gray-100 text-gray-800{% endif %}">
+                                {{ event.event_type|title }}
+                            </span>
+                            <span class="text-sm text-gray-600">
+                                {{ event.start_time|floatformat:2 }}s - {{ event.end_time|floatformat:2 }}s
+                            </span>
+                            <span class="text-sm text-gray-600">
+                                Duration: {{ event.duration|floatformat:2 }}s
+                            </span>
+                        </div>
+                        {% if event.affected_text %}
+                        <p class="text-gray-900 font-medium">Affected Text: "{{ event.affected_text }}"</p>
+                        {% endif %}
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-gray-600">Confidence</div>
+                        <div class="text-lg font-bold text-gray-900">{{ event.confidence|floatformat:2 }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Event Types Distribution -->
+    {% if event_types %}
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Event Type Distribution</h2>
+        <div class="grid md:grid-cols-{{ event_types|length }} gap-4">
+            {% for event_type in event_types %}
+            <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-2xl font-bold text-gray-900 mb-2">{{ event_type.count }}</div>
+                <div class="text-sm text-gray-600">{{ event_type.event_type|title }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Metrics Chart -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Detailed Metrics</h2>
+        <canvas id="metricsChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- Technical Details -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Technical Details</h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">CTC Loss Score</label>
+                <div class="px-4 py-3 bg-gray-50 rounded-lg text-gray-900 font-mono">
+                    {{ analysis.ctc_loss_score|floatformat:4 }}
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Total Stutter Duration</label>
+                <div class="px-4 py-3 bg-gray-50 rounded-lg text-gray-900">
+                    {{ analysis.total_stutter_duration|floatformat:2 }} seconds
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Analysis Duration</label>
+                <div class="px-4 py-3 bg-gray-50 rounded-lg text-gray-900">
+                    {{ analysis.analysis_duration_seconds|floatformat:2 }} seconds
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Model Version</label>
+                <div class="px-4 py-3 bg-gray-50 rounded-lg text-gray-900 font-mono">
+                    {{ analysis.model_version }}
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Analysis Date</label>
+                <div class="px-4 py-3 bg-gray-50 rounded-lg text-gray-900">
+                    {{ analysis.created_at|date:"F d, Y g:i A" }}
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Recording ID</label>
+                <div class="px-4 py-3 bg-gray-50 rounded-lg text-gray-900 font-mono">
+                    #{{ recording.id }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex justify-center space-x-4">
+        <a href="{% url 'diagnosis:recordings_list' %}" class="inline-flex items-center bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition font-semibold">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+            </svg>
+            All Recordings
+        </a>
+        
+        <a href="{% url 'diagnosis:record' %}" class="inline-flex items-center bg-brand-green text-white px-6 py-3 rounded-lg hover:bg-green-600 transition font-semibold">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            New Recording
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/analysis-charts.js' %}"></script>
+<script>
+    // Initialize chart with analysis data
+    document.addEventListener('DOMContentLoaded', function() {
+        const chartData = {
+            mismatchPercentage: {{ analysis.mismatch_percentage }},
+            confidenceScore: {{ analysis.confidence_score }},
+            ctcLoss: {{ analysis.ctc_loss_score }},
+            stutterFrequency: {{ analysis.stutter_frequency }},
+            totalEvents: {{ total_events }}
+        };
+        
+        initAnalysisChart(chartData);
+    });
+</script>
+{% endblock %}

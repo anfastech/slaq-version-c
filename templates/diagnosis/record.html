@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %}Record Audio - SLAQ{% endblock %}
+
+{% block extra_css %}
+<style>
+    #waveform {
+        background: linear-gradient(to bottom, #f3f4f6 50%, #e5e7eb 50%);
+        border: 2px solid #d1d5db;
+    }
+    .recording-active #waveform {
+        border-color: #ef4444;
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-6">
+    <!-- Header -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Record Audio 🎤</h1>
+        <p class="text-gray-600">Record your voice for AI-powered stuttering analysis</p>
+    </div>
+
+    <!-- Recording Interface -->
+    <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="space-y-6">
+            <!-- Status Display -->
+            <div id="status-display" class="text-center py-4">
+                <div id="status-icon" class="w-16 h-16 mx-auto mb-4">
+                    <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                    </svg>
+                </div>
+                <p id="status-text" class="text-lg font-medium text-gray-700">Ready to record</p>
+                <p id="timer-display" class="text-3xl font-bold text-brand-green mt-2 hidden">00:00</p>
+            </div>
+
+            <!-- Waveform Canvas -->
+            <div class="relative">
+                <canvas id="waveform" width="800" height="150" class="w-full rounded-lg"></canvas>
+            </div>
+
+            <!-- Recording Controls -->
+            <div class="flex justify-center space-x-4">
+                <button id="start-recording-btn" class="flex items-center space-x-2 bg-brand-green text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-semibold text-lg shadow-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <circle cx="10" cy="10" r="8"/>
+                    </svg>
+                    <span>Start Recording</span>
+                </button>
+
+                <button id="stop-recording-btn" class="hidden flex items-center space-x-2 bg-red-600 text-white px-8 py-4 rounded-lg hover:bg-red-700 transition font-semibold text-lg shadow-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <rect x="5" y="5" width="10" height="10"/>
+                    </svg>
+                    <span>Stop Recording</span>
+                </button>
+                
+                <button id="play-recording-btn" class="hidden flex items-center space-x-2 bg-blue-600 text-white px-6 py-4 rounded-lg hover:bg-blue-700 transition font-semibold shadow-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                    </svg>
+                    <span>Play</span>
+                </button>
+
+                <button id="upload-recording-btn" class="hidden flex items-center space-x-2 bg-purple-600 text-white px-6 py-4 rounded-lg hover:bg-purple-700 transition font-semibold shadow-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                    <span>Upload & Analyze</span>
+                </button>
+
+                <button id="reset-recording-btn" class="hidden flex items-center space-x-2 bg-gray-600 text-white px-6 py-4 rounded-lg hover:bg-gray-700 transition font-semibold shadow-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    <span>Reset</span>
+                </button>
+            </div>
+
+            <!-- Progress Bar (for upload) -->
+            <div id="upload-progress" class="hidden">
+                <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+                    <div id="upload-progress-bar" class="bg-brand-green h-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+                <p id="upload-status-text" class="text-center text-sm text-gray-600 mt-2">Uploading...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="bg-blue-50 rounded-xl p-6 border border-blue-200">
+        <h3 class="font-bold text-blue-900 mb-3 flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            Recording Tips
+        </h3>
+        <ul class="space-y-2 text-blue-800">
+            <li>• Find a quiet environment with minimal background noise</li>
+            <li>• Speak clearly and naturally - don't try to hide stutters</li>
+            <li>• Keep recording between 10-60 seconds for best results</li>
+            <li>• Hold your device steady about 6-12 inches from your mouth</li>
+            <li>• You can review your recording before uploading</li>
+        </ul>
+    </div>
+
+    <!-- File Upload Alternative -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+        <h3 class="font-bold text-gray-900 mb-4">Or Upload an Audio File</h3>
+        <form id="file-upload-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="flex items-center space-x-4">
+                <input type="file" id="audio-file-input" name="audio_file" accept="audio/*,.wav,.mp3,.m4a,.ogg,.webm" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-green focus:border-transparent">
+                <button type="submit" class="bg-brand-green text-white px-6 py-3 rounded-lg hover:bg-green-600 transition font-semibold whitespace-nowrap">
+                    Upload File
+                </button>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Max file size: 10MB. Allowed formats: WAV, MP3, M4A, OGG, WEBM</p>
+        </form>
+    </div>
+
+    <!-- Recent Recordings Link -->
+    <div class="text-center">
+        <a href="{% url 'diagnosis:recordings_list' %}" class="text-brand-green hover:text-green-600 font-medium inline-flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+            </svg>
+            View All Recordings
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/audio-recorder.js' %}"></script>
+<script>
+    // Initialize audio recorder when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        initAudioRecorder();
+        initFileUpload();
+    });
+</script>
+{% endblock %}
