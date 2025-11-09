@@ -1042,3 +1042,10 @@ INFO 2025-11-09 20:22:10,367 views Recording 5 uploaded by faheem_cp
 INFO 2025-11-09 20:22:10,368 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 99
 ERROR 2025-11-09 20:22:10,679 detect_stuttering Target transcript generation failed: Error opening 'C:\\Users\\Faheem\\Desktop\\AI\\Slaq\\slaq_project\\media\\recordings\\1\\2025\\11\\recording_1762699930321.webm': Format not recognised.
 INFO 2025-11-09 20:22:12,418 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 226
+ERROR 2025-11-09 20:23:10,924 detect_stuttering Target transcript generation failed: Error opening 'C:\\Users\\Faheem\\Desktop\\AI\\Slaq\\slaq_project\\media\\recordings\\1\\2025\\11\\recording_1762699930321.webm': Format not recognised.
+INFO 2025-11-09 20:24:21,975 autoreload C:\Users\Faheem\Desktop\AI\Slaq\slaq_project\diagnosis\tasks.py changed, reloading.
+INFO 2025-11-09 20:24:22,811 autoreload Watching for file changes with StatReloader
+INFO 2025-11-09 20:24:26,703 autoreload C:\Users\Faheem\Desktop\AI\Slaq\slaq_project\diagnosis\ai_engine\utils.py changed, reloading.
+INFO 2025-11-09 20:24:27,389 autoreload Watching for file changes with StatReloader
+INFO 2025-11-09 20:24:40,743 autoreload C:\Users\Faheem\Desktop\AI\Slaq\slaq_project\diagnosis\tasks.py changed, reloading.
+INFO 2025-11-09 20:24:41,200 autoreload Watching for file changes with StatReloader

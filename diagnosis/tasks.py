@@ -7,6 +7,7 @@ import librosa
 
 from .models import AudioRecording, AnalysisResult
 from .ai_engine.model_loader import get_stutter_detector
+from .ai_engine.utils import convert_audio_to_wav, cleanup_converted_file
 
 logger = logging.getLogger(__name__)
 
@@ -31,10 +32,15 @@ def process_audio_recording(self, recording_id):
         
         # Get audio file path
         audio_path = recording.audio_file.path
+        converted_path = None
+        
+        # Convert audio to WAV if needed (webm, mp3, etc.)
+        converted_path = convert_audio_to_wav(audio_path)
+        working_audio_path = converted_path
         
         # Calculate duration
         try:
-            duration = librosa.get_duration(path=audio_path)
+            duration = librosa.get_duration(path=working_audio_path)
             recording.duration_seconds = round(duration, 2)
             recording.save()
             logger.info(f"📏 Audio duration: {duration:.2f} seconds")
@@ -46,7 +52,7 @@ def process_audio_recording(self, recording_id):
         detector = get_stutter_detector()
         
         logger.info(f"🎵 Analyzing audio with AI...")
-        analysis_data = detector.analyze_audio(audio_path)
+        analysis_data = detector.analyze_audio(working_audio_path)
         
         # Save analysis results
         analysis = AnalysisResult.objects.create(
@@ -67,6 +73,10 @@ def process_audio_recording(self, recording_id):
         recording.processed_at = timezone.now()
         recording.save()
         
+        # Cleanup converted file if created
+        if converted_path and converted_path != audio_path:
+            cleanup_converted_file(converted_path)
+        
         logger.info(f"✅ Recording {recording_id} processed successfully")
         
         return {
@@ -75,13 +85,20 @@ def process_audio_recording(self, recording_id):
             'severity': analysis.severity,
             'mismatch_percentage': analysis.mismatch_percentage
         }
-        
+    
     except AudioRecording.DoesNotExist:
         logger.error(f"❌ Recording {recording_id} not found")
         raise
     
     except Exception as e:
         logger.error(f"❌ Processing failed for recording {recording_id}: {e}")
+        
+        # Cleanup converted file if it exists
+        try:
+            if 'converted_path' in locals() and converted_path:
+                cleanup_converted_file(converted_path)
+        except:
+            pass
         
         try:
             recording = AudioRecording.objects.get(id=recording_id)
