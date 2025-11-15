@@ -1049,3 +1049,1056 @@ INFO 2025-11-09 20:24:26,703 autoreload C:\Users\Faheem\Desktop\AI\Slaq\slaq_pro
 INFO 2025-11-09 20:24:27,389 autoreload Watching for file changes with StatReloader
 INFO 2025-11-09 20:24:40,743 autoreload C:\Users\Faheem\Desktop\AI\Slaq\slaq_project\diagnosis\tasks.py changed, reloading.
 INFO 2025-11-09 20:24:41,200 autoreload Watching for file changes with StatReloader
+ERROR 2025-11-15 02:05:45,023 signal Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x000002945F401990>> raised: ModuleNotFoundError("No module named 'torchaudio'")
+Traceback (most recent call last):
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\fixups\django.py", line 97, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\fixups\django.py", line 137, in validate_models
+    run_checks()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\slaq_project\urls.py", line 9, in <module>
+    path('diagnosis/', include('diagnosis.urls')),  # Audio & analysis
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\urls.py", line 3, in <module>
+    from . import views
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\views.py", line 11, in <module>
+    from .tasks import process_audio_recording
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\tasks.py", line 9, in <module>
+    from .ai_engine.model_loader import get_stutter_detector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\model_loader.py", line 3, in <module>
+    from .detect_stuttering import StutterDetector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py", line 4, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+ERROR 2025-11-15 02:05:45,023 signal Signal handler <promise@0x2945f3aac00 --> <bound method Celery._autodiscover_tasks of <Celery slaq_project at 0x2945f400fa0>>> raised: ModuleNotFoundError("No module named 'torchaudio'")
+Traceback (most recent call last):
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\vine\promises.py", line 161, in __call__
+    return self.throw()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\vine\promises.py", line 158, in __call__
+    retval = fun(*final_args, **final_kwargs)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 691, in _autodiscover_tasks
+    return self._autodiscover_tasks_from_fixups(related_name)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 700, in _autodiscover_tasks_from_fixups
+    return self._autodiscover_tasks_from_names([
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 695, in _autodiscover_tasks_from_names
+    return self.loader.autodiscover_tasks(
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 220, in autodiscover_tasks
+    mod.__name__ for mod in autodiscover_tasks(packages or (),
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 246, in autodiscover_tasks
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 246, in <listcomp>
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 271, in find_related_module
+    raise e
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 267, in find_related_module
+    return importlib.import_module(module_name)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\tasks.py", line 9, in <module>
+    from .ai_engine.model_loader import get_stutter_detector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\model_loader.py", line 3, in <module>
+    from .detect_stuttering import StutterDetector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py", line 4, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+INFO 2025-11-15 02:07:05,528 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 02:08:24,388 autoreload Watching for file changes with StatReloader
+ERROR 2025-11-15 02:08:54,902 signal Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x00000181D0E92170>> raised: ModuleNotFoundError("No module named 'torchaudio'")
+Traceback (most recent call last):
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\fixups\django.py", line 97, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\fixups\django.py", line 137, in validate_models
+    run_checks()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\slaq_project\urls.py", line 9, in <module>
+    path('diagnosis/', include('diagnosis.urls')),  # Audio & analysis
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\urls.py", line 3, in <module>
+    from . import views
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\views.py", line 11, in <module>
+    from .tasks import process_audio_recording
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\tasks.py", line 9, in <module>
+    from .ai_engine.model_loader import get_stutter_detector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\model_loader.py", line 3, in <module>
+    from .detect_stuttering import StutterDetector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py", line 4, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+ERROR 2025-11-15 02:08:54,902 signal Signal handler <promise@0x181d0e3ac00 --> <bound method Celery._autodiscover_tasks of <Celery slaq_project at 0x181d0e91f60>>> raised: ModuleNotFoundError("No module named 'torchaudio'")
+Traceback (most recent call last):
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\vine\promises.py", line 161, in __call__
+    return self.throw()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\vine\promises.py", line 158, in __call__
+    retval = fun(*final_args, **final_kwargs)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 691, in _autodiscover_tasks
+    return self._autodiscover_tasks_from_fixups(related_name)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 700, in _autodiscover_tasks_from_fixups
+    return self._autodiscover_tasks_from_names([
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 695, in _autodiscover_tasks_from_names
+    return self.loader.autodiscover_tasks(
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 220, in autodiscover_tasks
+    mod.__name__ for mod in autodiscover_tasks(packages or (),
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 246, in autodiscover_tasks
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 246, in <listcomp>
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 271, in find_related_module
+    raise e
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 267, in find_related_module
+    return importlib.import_module(module_name)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\tasks.py", line 9, in <module>
+    from .ai_engine.model_loader import get_stutter_detector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\model_loader.py", line 3, in <module>
+    from .detect_stuttering import StutterDetector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py", line 4, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+INFO 2025-11-15 08:38:19,178 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 08:39:35,554 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 08:41:34,212 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 08:48:34,274 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 08:50:35,530 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 08:51:09,846 basehttp "GET / HTTP/1.1" 302 0
+INFO 2025-11-15 08:51:10,082 basehttp "GET /dashboard/ HTTP/1.1" 200 16772
+INFO 2025-11-15 08:51:10,266 basehttp "GET /static/css/main.css HTTP/1.1" 200 4727
+INFO 2025-11-15 08:51:10,277 basehttp "GET /static/js/main.js HTTP/1.1" 200 8914
+INFO 2025-11-15 08:51:10,286 basehttp "GET /static/js/main.js HTTP/1.1" 200 8914
+WARNING 2025-11-15 08:51:10,782 log Not Found: /favicon.ico
+WARNING 2025-11-15 08:51:10,782 basehttp "GET /favicon.ico HTTP/1.1" 404 3494
+INFO 2025-11-15 08:51:14,015 basehttp "GET /dashboard/ HTTP/1.1" 200 16772
+INFO 2025-11-15 09:02:08,237 basehttp "GET /dashboard/ HTTP/1.1" 200 16772
+WARNING 2025-11-15 09:04:16,429 log Not Found: /progress/
+WARNING 2025-11-15 09:04:16,431 basehttp "GET /progress/ HTTP/1.1" 404 3488
+INFO 2025-11-15 09:18:24,831 basehttp "GET /dashboard/ HTTP/1.1" 200 16772
+INFO 2025-11-15 09:18:34,028 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-15 09:18:34,135 basehttp "GET /static/js/audio-recorder.js HTTP/1.1" 200 14539
+INFO 2025-11-15 09:18:49,910 views Recording 5 uploaded by kpanfas6@gmail.com
+INFO 2025-11-15 09:18:50,208 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 99
+INFO 2025-11-15 09:18:52,452 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:18:54,453 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:18:56,607 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:18:58,493 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:00,482 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:02,479 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:04,499 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:06,479 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:08,464 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:10,477 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:12,446 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:14,475 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:16,489 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:18,498 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:20,445 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:22,401 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:24,557 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:26,356 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:28,611 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:30,389 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:32,479 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:34,470 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:36,471 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:38,478 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:40,419 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:42,532 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:44,559 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:46,490 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:48,466 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:50,406 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:52,405 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:54,507 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:56,465 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:19:58,430 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:00,471 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:02,392 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:04,476 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:06,423 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:08,495 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:10,482 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:12,479 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:14,494 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:16,524 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:18,518 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:20,433 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:22,430 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:24,401 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:26,468 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:28,481 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:30,462 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:32,573 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:34,539 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:36,487 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:38,457 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:40,464 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:42,429 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:44,489 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:46,478 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:48,464 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:50,419 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:52,426 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:54,570 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:56,483 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:20:58,457 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:01,346 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:03,427 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:05,409 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:07,296 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:09,351 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:11,369 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:13,247 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:15,394 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:17,392 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:19,222 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:21,346 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:23,361 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:25,283 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:27,530 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:29,280 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:31,393 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:33,302 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:35,381 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:37,394 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:39,361 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:41,327 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:43,479 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:45,367 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:47,319 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:49,455 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:51,325 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:53,271 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:55,393 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:57,369 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:21:59,283 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:08,697 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:10,482 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:13,537 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:15,314 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:17,439 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:19,287 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:21,352 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:23,344 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:25,382 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:27,522 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:29,242 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:31,384 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:33,378 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:35,421 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:37,326 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:39,347 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:41,326 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:43,459 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:45,292 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:46,410 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:48,476 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:50,399 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:52,476 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:54,470 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:56,503 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:22:58,568 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:00,436 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:02,721 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:04,456 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:06,467 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:09,425 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:11,296 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:13,381 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:15,375 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:17,392 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:19,341 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:21,328 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:23,393 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:25,325 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:27,352 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:29,382 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:31,326 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:33,349 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:35,375 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:37,278 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:39,341 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:41,354 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:43,394 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:45,344 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:47,339 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:49,341 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:51,293 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:53,343 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:55,293 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:57,358 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:23:59,306 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:24:01,400 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:24:03,359 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:24:05,335 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:24:07,278 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:24:12,322 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:12,406 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:26,180 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:26,491 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:29,349 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:31,388 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:33,335 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:35,458 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:37,299 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:39,308 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:41,462 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:43,376 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:45,272 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:25:47,293 basehttp "GET /diagnosis/api/status/5/ HTTP/1.1" 200 51
+INFO 2025-11-15 09:32:10,663 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 09:32:21,247 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-15 09:33:12,270 views Recording 6 uploaded by kpanfas6@gmail.com
+INFO 2025-11-15 09:33:12,601 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 99
+INFO 2025-11-15 09:33:12,601 tasks 🎯 Processing recording 6
+INFO 2025-11-15 09:33:12,853 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm.mp3 to WAV format...
+INFO 2025-11-15 09:33:14,839 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:17,234 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:19,364 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:21,323 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:23,431 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:25,248 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:27,296 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:29,334 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:31,357 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:32,859 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:34,825 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:36,798 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:38,834 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:40,791 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:42,823 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:44,807 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:46,831 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:48,837 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:50,823 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:52,818 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:54,884 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:56,839 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:33:58,847 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:00,836 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:02,829 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:04,825 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:07,288 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:09,198 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:10,922 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 09:34:10,941 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 09:34:10,941 tasks 🤖 Loading AI models...
+INFO 2025-11-15 09:34:10,941 detect_stuttering 🔄 Initializing StutterDetector models...
+INFO 2025-11-15 09:34:11,343 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:13,351 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:15,301 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:17,320 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:19,404 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:21,307 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:23,256 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:25,352 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:27,316 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:29,490 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:31,301 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:33,322 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:35,410 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:37,395 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:39,464 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:41,415 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:43,338 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:45,381 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:47,404 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:49,334 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:51,311 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:53,296 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:55,289 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:57,289 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:34:59,423 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:01,339 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:03,341 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:05,307 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:07,297 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:09,362 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:11,427 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:13,334 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:15,425 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:17,299 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:19,347 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:21,337 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:23,369 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:25,425 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:27,380 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:35:29,372 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:36:12,371 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:37:12,272 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:12,355 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:27,570 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:28,969 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:31,305 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:33,291 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:35,381 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:37,365 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:39,326 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:41,415 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:43,379 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:45,372 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:47,350 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:49,299 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:51,322 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:53,328 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:55,386 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:57,353 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:38:58,836 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:01,360 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:03,367 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:05,439 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:07,441 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:09,363 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:11,375 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:13,394 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:15,355 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:17,345 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:19,543 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:21,329 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:23,357 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:25,287 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:27,372 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:29,360 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:31,305 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:33,372 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:35,223 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:37,471 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:39,364 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:41,285 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:43,491 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:45,347 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:47,244 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:49,305 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:51,276 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:53,406 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:55,491 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:57,378 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:39:59,296 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 09:40:12,384 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:20,722 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 10:04:23,912 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:24,672 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:26,784 basehttp "GET /diagnosis/api/status/6/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:27,695 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-15 10:04:42,162 views Recording 7 uploaded by kpanfas6@gmail.com
+INFO 2025-11-15 10:04:42,306 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 99
+INFO 2025-11-15 10:04:42,308 tasks 🎯 Processing recording 7
+INFO 2025-11-15 10:04:42,380 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5.mp3 to WAV format...
+INFO 2025-11-15 10:04:44,384 basehttp "GET /diagnosis/api/status/7/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:45,455 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+INFO 2025-11-15 10:04:45,466 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 10:04:45,467 tasks 🤖 Loading AI models...
+INFO 2025-11-15 10:04:45,467 detect_stuttering 🔄 Initializing StutterDetector models...
+INFO 2025-11-15 10:04:46,384 basehttp "GET /diagnosis/api/status/7/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:49,177 basehttp "GET /diagnosis/api/status/7/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:51,205 basehttp "GET /diagnosis/api/status/7/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:53,270 basehttp "GET /diagnosis/api/status/7/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:55,195 basehttp "GET /diagnosis/api/status/7/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:04:56,623 detect_stuttering ✅ Models loaded successfully
+INFO 2025-11-15 10:04:56,623 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 10:04:56,623 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+ERROR 2025-11-15 10:04:56,623 detect_stuttering Target transcript generation failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+ERROR 2025-11-15 10:04:56,623 detect_stuttering ❌ Analysis failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+ERROR 2025-11-15 10:04:56,623 tasks ❌ Processing failed for recording 7: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+INFO 2025-11-15 10:04:56,623 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+INFO 2025-11-15 10:04:57,061 basehttp "GET /diagnosis/api/status/7/ HTTP/1.1" 200 146
+INFO 2025-11-15 10:05:56,642 tasks 🎯 Processing recording 7
+INFO 2025-11-15 10:05:56,711 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5.mp3 to WAV format...
+INFO 2025-11-15 10:05:56,735 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+INFO 2025-11-15 10:05:56,748 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 10:05:56,748 tasks 🤖 Loading AI models...
+INFO 2025-11-15 10:05:56,748 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 10:05:56,748 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+ERROR 2025-11-15 10:05:56,748 detect_stuttering Target transcript generation failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+ERROR 2025-11-15 10:05:56,748 detect_stuttering ❌ Analysis failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+ERROR 2025-11-15 10:05:56,748 tasks ❌ Processing failed for recording 7: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+INFO 2025-11-15 10:05:56,748 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+INFO 2025-11-15 10:07:56,757 tasks 🎯 Processing recording 7
+INFO 2025-11-15 10:07:56,813 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5.mp3 to WAV format...
+INFO 2025-11-15 10:07:56,848 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+INFO 2025-11-15 10:07:56,866 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 10:07:56,866 tasks 🤖 Loading AI models...
+INFO 2025-11-15 10:07:56,866 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 10:07:56,866 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+ERROR 2025-11-15 10:07:56,867 detect_stuttering Target transcript generation failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+ERROR 2025-11-15 10:07:56,868 detect_stuttering ❌ Analysis failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+ERROR 2025-11-15 10:07:56,868 tasks ❌ Processing failed for recording 7: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+INFO 2025-11-15 10:07:56,869 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+INFO 2025-11-15 10:10:56,892 tasks 🎯 Processing recording 7
+INFO 2025-11-15 10:10:56,955 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5.mp3 to WAV format...
+INFO 2025-11-15 10:10:56,979 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+INFO 2025-11-15 10:10:56,987 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 10:10:56,987 tasks 🤖 Loading AI models...
+INFO 2025-11-15 10:10:56,987 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 10:10:56,987 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+ERROR 2025-11-15 10:10:56,987 detect_stuttering Target transcript generation failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+ERROR 2025-11-15 10:10:56,987 detect_stuttering ❌ Analysis failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+ERROR 2025-11-15 10:10:56,987 tasks ❌ Processing failed for recording 7: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+INFO 2025-11-15 10:10:56,987 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_JRqVJT5_converted.wav
+INFO 2025-11-15 10:13:49,527 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 10:13:55,500 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-15 10:14:02,383 views Recording 8 uploaded by kpanfas6@gmail.com
+INFO 2025-11-15 10:14:02,518 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 99
+INFO 2025-11-15 10:14:02,520 tasks 🎯 Processing recording 8
+INFO 2025-11-15 10:14:02,603 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c.mp3 to WAV format...
+INFO 2025-11-15 10:14:04,608 basehttp "GET /diagnosis/api/status/8/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:14:05,399 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 10:14:05,399 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 10:14:05,399 tasks 🤖 Loading AI models...
+INFO 2025-11-15 10:14:05,399 detect_stuttering 🔄 Initializing StutterDetector models...
+INFO 2025-11-15 10:14:06,598 basehttp "GET /diagnosis/api/status/8/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:14:08,713 basehttp "GET /diagnosis/api/status/8/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:14:10,773 basehttp "GET /diagnosis/api/status/8/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:14:12,591 basehttp "GET /diagnosis/api/status/8/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:14:14,584 basehttp "GET /diagnosis/api/status/8/ HTTP/1.1" 200 54
+INFO 2025-11-15 10:14:15,566 detect_stuttering ✅ Models loaded successfully
+INFO 2025-11-15 10:14:15,566 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 10:14:15,566 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+ERROR 2025-11-15 10:14:15,716 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+ERROR 2025-11-15 10:14:15,716 detect_stuttering ❌ Analysis failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+ERROR 2025-11-15 10:14:15,716 tasks ❌ Processing failed for recording 8: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-15 10:14:15,716 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 10:14:16,591 basehttp "GET /diagnosis/api/status/8/ HTTP/1.1" 200 1666
+INFO 2025-11-15 10:15:15,730 tasks 🎯 Processing recording 8
+INFO 2025-11-15 10:15:15,804 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c.mp3 to WAV format...
+INFO 2025-11-15 10:15:15,831 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 10:15:15,842 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 10:15:15,842 tasks 🤖 Loading AI models...
+INFO 2025-11-15 10:15:15,842 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 10:15:15,843 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+ERROR 2025-11-15 10:15:15,855 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+ERROR 2025-11-15 10:15:15,856 detect_stuttering ❌ Analysis failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+ERROR 2025-11-15 10:15:15,856 tasks ❌ Processing failed for recording 8: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-15 10:15:15,857 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 10:17:15,884 tasks 🎯 Processing recording 8
+INFO 2025-11-15 10:17:15,952 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c.mp3 to WAV format...
+INFO 2025-11-15 10:17:15,982 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 10:17:15,994 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 10:17:15,994 tasks 🤖 Loading AI models...
+INFO 2025-11-15 10:17:15,994 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 10:17:15,995 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+ERROR 2025-11-15 10:17:16,008 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+ERROR 2025-11-15 10:17:16,008 detect_stuttering ❌ Analysis failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+ERROR 2025-11-15 10:17:16,009 tasks ❌ Processing failed for recording 8: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-15 10:17:16,010 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 10:46:51,095 autoreload Watching for file changes with StatReloader
+ERROR 2025-11-15 10:47:26,265 signal Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x000001F2BDE160E0>> raised: ModuleNotFoundError("No module named 'torchaudio'")
+Traceback (most recent call last):
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\fixups\django.py", line 97, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\fixups\django.py", line 137, in validate_models
+    run_checks()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\slaq_project\urls.py", line 9, in <module>
+    path('diagnosis/', include('diagnosis.urls')),  # Audio & analysis
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\urls.py", line 3, in <module>
+    from . import views
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\views.py", line 11, in <module>
+    from .tasks import process_audio_recording
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\tasks.py", line 9, in <module>
+    from .ai_engine.model_loader import get_stutter_detector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\model_loader.py", line 3, in <module>
+    from .detect_stuttering import StutterDetector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py", line 4, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+ERROR 2025-11-15 10:47:26,265 signal Signal handler <promise@0x1f2bddbac00 --> <bound method Celery._autodiscover_tasks of <Celery slaq_project at 0x1f2bde15ed0>>> raised: ModuleNotFoundError("No module named 'torchaudio'")
+Traceback (most recent call last):
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\vine\promises.py", line 161, in __call__
+    return self.throw()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\vine\promises.py", line 158, in __call__
+    retval = fun(*final_args, **final_kwargs)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 691, in _autodiscover_tasks
+    return self._autodiscover_tasks_from_fixups(related_name)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 700, in _autodiscover_tasks_from_fixups
+    return self._autodiscover_tasks_from_names([
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 695, in _autodiscover_tasks_from_names
+    return self.loader.autodiscover_tasks(
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 220, in autodiscover_tasks
+    mod.__name__ for mod in autodiscover_tasks(packages or (),
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 246, in autodiscover_tasks
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 246, in <listcomp>
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 271, in find_related_module
+    raise e
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 267, in find_related_module
+    return importlib.import_module(module_name)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\tasks.py", line 9, in <module>
+    from .ai_engine.model_loader import get_stutter_detector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\model_loader.py", line 3, in <module>
+    from .detect_stuttering import StutterDetector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py", line 4, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+ERROR 2025-11-15 10:47:37,852 signal Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x0000012B13FE60E0>> raised: ModuleNotFoundError("No module named 'torchaudio'")
+Traceback (most recent call last):
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\fixups\django.py", line 97, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\fixups\django.py", line 137, in validate_models
+    run_checks()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\slaq_project\urls.py", line 9, in <module>
+    path('diagnosis/', include('diagnosis.urls')),  # Audio & analysis
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\urls.py", line 3, in <module>
+    from . import views
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\views.py", line 11, in <module>
+    from .tasks import process_audio_recording
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\tasks.py", line 9, in <module>
+    from .ai_engine.model_loader import get_stutter_detector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\model_loader.py", line 3, in <module>
+    from .detect_stuttering import StutterDetector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py", line 4, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+ERROR 2025-11-15 10:47:37,868 signal Signal handler <promise@0x12b13f8ac00 --> <bound method Celery._autodiscover_tasks of <Celery slaq_project at 0x12b13fe5ed0>>> raised: ModuleNotFoundError("No module named 'torchaudio'")
+Traceback (most recent call last):
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\vine\promises.py", line 161, in __call__
+    return self.throw()
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\vine\promises.py", line 158, in __call__
+    retval = fun(*final_args, **final_kwargs)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 691, in _autodiscover_tasks
+    return self._autodiscover_tasks_from_fixups(related_name)
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 700, in _autodiscover_tasks_from_fixups
+    return self._autodiscover_tasks_from_names([
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\app\base.py", line 695, in _autodiscover_tasks_from_names
+    return self.loader.autodiscover_tasks(
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 220, in autodiscover_tasks
+    mod.__name__ for mod in autodiscover_tasks(packages or (),
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 246, in autodiscover_tasks
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 246, in <listcomp>
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 271, in find_related_module
+    raise e
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\lib\site-packages\celery\loaders\base.py", line 267, in find_related_module
+    return importlib.import_module(module_name)
+  File "C:\Users\kpanfas\.pyenv\pyenv-win\versions\3.10.11\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\tasks.py", line 9, in <module>
+    from .ai_engine.model_loader import get_stutter_detector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\model_loader.py", line 3, in <module>
+    from .detect_stuttering import StutterDetector
+  File "C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py", line 4, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+INFO 2025-11-15 10:48:30,621 autoreload C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torch\_export\verifier.py changed, reloading.
+INFO 2025-11-15 10:48:32,467 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 10:55:13,467 autoreload C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\venv\Lib\site-packages\torch\__init__.py changed, reloading.
+INFO 2025-11-15 10:55:15,192 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 10:57:56,484 autoreload Watching for file changes with StatReloader
+INFO 2025-11-15 10:58:07,520 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-15 10:58:07,821 basehttp "GET /static/js/audio-recorder.js HTTP/1.1" 200 14539
+INFO 2025-11-15 10:59:28,763 tasks 🎯 Processing recording 6
+INFO 2025-11-15 10:59:28,855 utils 📁 Using existing converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 10:59:36,335 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 10:59:36,335 tasks 🤖 Loading AI models...
+INFO 2025-11-15 10:59:36,335 detect_stuttering 🔄 Initializing StutterDetector models...
+INFO 2025-11-15 10:59:50,799 detect_stuttering ✅ Models loaded successfully
+INFO 2025-11-15 10:59:50,799 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 10:59:50,799 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 10:59:53,523 detect_stuttering 📝 Generated target transcript: repetition perrolongation andsilent blocks
+INFO 2025-11-15 11:00:00,058 detect_stuttering ✅ Analysis complete in 9.26s
+ERROR 2025-11-15 11:00:00,092 tasks ❌ Processing failed for recording 6: null value in column "stutter_timestamps" of relation "diagnosis_analysisresult" violates not-null constraint
+DETAIL:  Failing row contains (2, RA RA RA RAPETITION PURR ROLONGATION AND SILENT BLOCKS, REPETITION PERROLONGATION ANDSILENT BLOCKS, ["A RA RA RA", "U", " R", " "], 33, 1.93, null, null, null, moderate, 0.74, 9.26, wav2vec2-base-960h, 2025-11-15 05:30:00.074672+00, 6).
+
+INFO 2025-11-15 11:00:00,093 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 11:00:00,704 tasks 🎯 Processing recording 8
+INFO 2025-11-15 11:00:00,776 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c.mp3 to WAV format...
+INFO 2025-11-15 11:00:00,816 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 11:00:00,840 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 11:00:00,840 tasks 🤖 Loading AI models...
+INFO 2025-11-15 11:00:00,841 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 11:00:00,841 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 11:00:03,293 detect_stuttering 📝 Generated target transcript: repetition perrolongation andsilent blocks
+INFO 2025-11-15 11:00:07,379 detect_stuttering ✅ Analysis complete in 6.54s
+ERROR 2025-11-15 11:00:07,379 tasks ❌ Processing failed for recording 8: null value in column "stutter_timestamps" of relation "diagnosis_analysisresult" violates not-null constraint
+DETAIL:  Failing row contains (3, RA RA RA RAPETITION PURR ROLONGATION AND SILENT BLOCKS, REPETITION PERROLONGATION ANDSILENT BLOCKS, ["A RA RA RA", "U", " R", " "], 33, 1.93, null, null, null, moderate, 0.74, 6.54, wav2vec2-base-960h, 2025-11-15 05:30:07.379666+00, 8).
+
+INFO 2025-11-15 11:00:07,379 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_r9lwr6c_converted.wav
+INFO 2025-11-15 11:00:20,519 views Recording 9 uploaded by kpanfas6@gmail.com
+INFO 2025-11-15 11:00:20,629 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 99
+INFO 2025-11-15 11:00:20,629 tasks 🎯 Processing recording 9
+INFO 2025-11-15 11:00:20,721 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31.mp3 to WAV format...
+INFO 2025-11-15 11:00:20,767 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav
+INFO 2025-11-15 11:00:20,767 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 11:00:20,767 tasks 🤖 Loading AI models...
+INFO 2025-11-15 11:00:20,782 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 11:00:20,782 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav
+INFO 2025-11-15 11:00:22,910 basehttp "GET /diagnosis/api/status/9/ HTTP/1.1" 200 54
+INFO 2025-11-15 11:00:24,171 detect_stuttering 📝 Generated target transcript: repetition perrolongation andsilent blocks
+INFO 2025-11-15 11:00:25,204 basehttp "GET /diagnosis/api/status/9/ HTTP/1.1" 200 54
+INFO 2025-11-15 11:00:27,292 basehttp "GET /diagnosis/api/status/9/ HTTP/1.1" 200 54
+INFO 2025-11-15 11:00:29,213 basehttp "GET /diagnosis/api/status/9/ HTTP/1.1" 200 54
+INFO 2025-11-15 11:00:29,345 detect_stuttering ✅ Analysis complete in 8.56s
+ERROR 2025-11-15 11:00:29,345 tasks ❌ Processing failed for recording 9: null value in column "stutter_timestamps" of relation "diagnosis_analysisresult" violates not-null constraint
+DETAIL:  Failing row contains (4, RA RA RA RAPETITION PURR ROLONGATION AND SILENT BLOCKS, REPETITION PERROLONGATION ANDSILENT BLOCKS, ["A RA RA RA", "U", " R", " "], 33, 1.93, null, null, null, moderate, 0.74, 8.56, wav2vec2-base-960h, 2025-11-15 05:30:29.345271+00, 9).
+
+INFO 2025-11-15 11:00:29,345 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav
+INFO 2025-11-15 11:00:31,183 basehttp "GET /diagnosis/api/status/9/ HTTP/1.1" 200 445
+INFO 2025-11-15 11:01:00,109 tasks 🎯 Processing recording 6
+INFO 2025-11-15 11:01:00,174 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm.mp3 to WAV format...
+INFO 2025-11-15 11:01:00,217 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 11:01:00,229 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 11:01:00,229 tasks 🤖 Loading AI models...
+INFO 2025-11-15 11:01:00,229 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 11:01:00,229 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 11:01:03,250 detect_stuttering 📝 Generated target transcript: repetition perrolongation andsilent blocks
+INFO 2025-11-15 11:01:07,562 detect_stuttering ✅ Analysis complete in 7.33s
+ERROR 2025-11-15 11:01:07,562 tasks ❌ Processing failed for recording 6: null value in column "stutter_timestamps" of relation "diagnosis_analysisresult" violates not-null constraint
+DETAIL:  Failing row contains (5, RA RA RA RAPETITION PURR ROLONGATION AND SILENT BLOCKS, REPETITION PERROLONGATION ANDSILENT BLOCKS, ["A RA RA RA", "U", " R", " "], 33, 1.93, null, null, null, moderate, 0.74, 7.33, wav2vec2-base-960h, 2025-11-15 05:31:07.562612+00, 6).
+
+INFO 2025-11-15 11:01:07,562 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 11:01:29,360 tasks 🎯 Processing recording 9
+INFO 2025-11-15 11:01:29,428 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31.mp3 to WAV format...
+INFO 2025-11-15 11:01:29,455 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav
+INFO 2025-11-15 11:01:29,467 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 11:01:29,467 tasks 🤖 Loading AI models...
+INFO 2025-11-15 11:01:29,467 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 11:01:29,468 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav
+INFO 2025-11-15 11:01:32,004 detect_stuttering 📝 Generated target transcript: repetition perrolongation andsilent blocks
+INFO 2025-11-15 11:01:36,311 detect_stuttering ✅ Analysis complete in 6.84s
+ERROR 2025-11-15 11:01:36,313 tasks ❌ Processing failed for recording 9: null value in column "stutter_timestamps" of relation "diagnosis_analysisresult" violates not-null constraint
+DETAIL:  Failing row contains (6, RA RA RA RAPETITION PURR ROLONGATION AND SILENT BLOCKS, REPETITION PERROLONGATION ANDSILENT BLOCKS, ["A RA RA RA", "U", " R", " "], 33, 1.93, null, null, null, moderate, 0.74, 6.84, wav2vec2-base-960h, 2025-11-15 05:31:36.311124+00, 9).
+
+INFO 2025-11-15 11:01:36,314 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav
+INFO 2025-11-15 11:03:07,584 tasks 🎯 Processing recording 6
+INFO 2025-11-15 11:03:07,669 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm.mp3 to WAV format...
+INFO 2025-11-15 11:03:07,702 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 11:03:07,714 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 11:03:07,714 tasks 🤖 Loading AI models...
+INFO 2025-11-15 11:03:07,714 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 11:03:07,714 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 11:03:10,849 detect_stuttering 📝 Generated target transcript: repetition perrolongation andsilent blocks
+INFO 2025-11-15 11:03:16,224 detect_stuttering ✅ Analysis complete in 8.51s
+ERROR 2025-11-15 11:03:16,224 tasks ❌ Processing failed for recording 6: null value in column "stutter_timestamps" of relation "diagnosis_analysisresult" violates not-null constraint
+DETAIL:  Failing row contains (7, RA RA RA RAPETITION PURR ROLONGATION AND SILENT BLOCKS, REPETITION PERROLONGATION ANDSILENT BLOCKS, ["A RA RA RA", "U", " R", " "], 33, 1.93, null, null, null, moderate, 0.74, 8.51, wav2vec2-base-960h, 2025-11-15 05:33:16.224433+00, 6).
+
+INFO 2025-11-15 11:03:16,224 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_lJ27Ecm_converted.wav
+INFO 2025-11-15 11:03:36,330 tasks 🎯 Processing recording 9
+INFO 2025-11-15 11:03:36,400 utils 🔄 Converting C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31.mp3 to WAV format...
+INFO 2025-11-15 11:03:36,426 utils ✅ Converted to: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav
+INFO 2025-11-15 11:03:36,439 tasks 📏 Audio duration: 11.59 seconds
+INFO 2025-11-15 11:03:36,439 tasks 🤖 Loading AI models...
+INFO 2025-11-15 11:03:36,439 tasks 🎵 Analyzing audio with AI...
+INFO 2025-11-15 11:03:36,439 detect_stuttering 🎯 Starting analysis for: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav
+INFO 2025-11-15 11:03:39,254 detect_stuttering 📝 Generated target transcript: repetition perrolongation andsilent blocks
+INFO 2025-11-15 11:03:44,654 detect_stuttering ✅ Analysis complete in 8.21s
+ERROR 2025-11-15 11:03:44,657 tasks ❌ Processing failed for recording 9: null value in column "stutter_timestamps" of relation "diagnosis_analysisresult" violates not-null constraint
+DETAIL:  Failing row contains (8, RA RA RA RAPETITION PURR ROLONGATION AND SILENT BLOCKS, REPETITION PERROLONGATION ANDSILENT BLOCKS, ["A RA RA RA", "U", " R", " "], 33, 1.93, null, null, null, moderate, 0.74, 8.21, wav2vec2-base-960h, 2025-11-15 05:33:44.655645+00, 9).
+
+INFO 2025-11-15 11:03:44,657 utils 🗑️ Cleaned up converted file: C:\Users\kpanfas\Desktop\slaq\slaq-version-d-to-a\slaq-version-d\media\recordings\3\2025\11\the_3_ways_people_stutter_stuttering_slp_teacher_D8WXf31_converted.wav

@@ -185,3 +185,5 @@ pgdata/
 # Documentation builds
 docs/_build/
 site/
+
+**/__pycache__/**
