@@ -39,23 +39,15 @@ def download_all_models():
     
     models = [
         {
-            "name": "facebook/wav2vec2-base-960h",
-            "size": "~360 MB",
-            "purpose": "Primary stutter detection"
+            # REPLACED English models with the high-impact Indic model
+            "name": "ai4bharat/indicwav2vec-hindi", 
+            "size": "Estimated ~1.2 GB", # The Wav2Vec2-large family size
+            "purpose": "Primary ASR for Indian Speech (Generalization for Accents)"
         },
-        {
-            "name": "facebook/wav2vec2-large-960h-lv60-self", 
-            "size": "~1.18 GB",
-            "purpose": "Advanced analysis"
-        },
-        {
-            "name": "jonatasgrosman/wav2vec2-large-xlsr-53-english",
-            "size": "~1.18 GB", 
-            "purpose": "Target transcript generation"
-        }
+        # REMOVE the old English model entries here
     ]
     
-    total_size_gb = 2.7  # Approximate total
+    total_size_gb = 1.2  # Approximate total
     
     print(f"📦 Total Download Size: ~{total_size_gb} GB")
     print(f"⏳ Estimated Time: 10-20 minutes")

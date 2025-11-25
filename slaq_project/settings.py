@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Load environment variables from .env file
+# Load environment variables
 load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'dev-secret-key-change-in-production')
@@ -21,11 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Third party
     'django_celery_results',
-    
-    # Local apps
     'core.apps.CoreConfig',
     'diagnosis.apps.DiagnosisConfig',
 ]
@@ -64,9 +60,9 @@ WSGI_APPLICATION = 'slaq_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'slaq_db'),
+        'NAME': os.getenv('DB_NAME', 'slaq_d_db'),
         'USER': os.getenv('DB_USER', 'postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
+        'PASSWORD': os.getenv('DB_USER_PASSWORD', 'postgres'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', '5432'),
     }
@@ -86,16 +82,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# Media files (User uploads)
+# Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication URLs
@@ -103,9 +98,9 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 
-# File Upload Settings (MVP: max 10MB)
+# File Upload Settings
 MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # 10MB
-ALLOWED_AUDIO_FORMATS = ['.wav', '.mp3', '.webm', '.ogg']
+ALLOWED_AUDIO_FORMATS = ['.wav', '.mp3', '.webm', '.ogg', '.m4a']
 
 # Celery Configuration
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
@@ -115,9 +110,14 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
 
-# AI Model Configuration
+# ------------------------------------------------------------------------------
+# AI Engine Configuration (MMS-1B Optimized)
+# ------------------------------------------------------------------------------
 AI_MODELS_DIR = BASE_DIR / 'ml_models'
-WAV2VEC2_BASE_MODEL = "facebook/wav2vec2-base-960h"
+
+# Primary Model: Meta MMS 1B (Massively Multilingual Speech)
+# Capable of recognizing 1000+ languages, including all major Indian languages.
+WAV2VEC2_BASE_MODEL = "facebook/mms-1b-all"
 
 # Audio Processing Settings
 AUDIO_SAMPLE_RATE = 16000
@@ -125,48 +125,11 @@ AUDIO_SAMPLE_RATE = 16000
 # Stutter Detection Thresholds
 STUTTER_THRESHOLDS = {
     'prolongation_duration': 0.4,  # seconds
-    'mild_mismatch': 10,  # percentage
+    'mild_mismatch': 10,           # percentage
     'moderate_mismatch': 25,
     'severe_mismatch': 50,
 }
 
-# Logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs' / 'slaq.log',
-            'formatter': 'verbose',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        },
-    },
-    'root': {
-        'handlers': ['console', 'file'],
-        'level': 'INFO',
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console', 'file'],
-            'level': 'INFO',
-            'propagate': False,
-        },
-        'diagnosis': {
-            'handlers': ['console', 'file'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-    },
-}
+# Memory Optimization for MMS-1B
+# Setting this to False can help if you hit OOM errors during heavy load
+PIN_MEMORY = True

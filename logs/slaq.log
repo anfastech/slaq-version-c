@@ -1068,3 +1068,527 @@ ERROR 2025-11-20 12:34:11,577 views Upload failed: 'NoneType' object has no attr
 ERROR 2025-11-20 12:34:11,577 log Internal Server Error: /diagnosis/upload/
 ERROR 2025-11-20 12:34:11,577 basehttp "POST /diagnosis/upload/ HTTP/1.1" 500 55
 INFO 2025-11-20 12:50:19,448 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 12:50:24,633 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-20 12:50:24,650 basehttp "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-11-20 12:50:24,651 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-11-20 12:50:24,652 basehttp "GET /static/js/audio-recorder.js HTTP/1.1" 304 0
+INFO 2025-11-20 12:50:29,771 views Recording 15 uploaded by faheem_cp
+INFO 2025-11-20 12:50:29,821 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-20 12:50:31,875 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:34,036 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:36,044 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:37,866 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:40,044 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:42,039 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:44,039 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:45,885 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:48,039 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:50,146 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:52,147 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:53,880 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:56,040 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:50:58,075 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 55
+INFO 2025-11-20 12:51:00,057 basehttp "GET /diagnosis/api/status/15/ HTTP/1.1" 200 125
+INFO 2025-11-20 12:51:01,631 basehttp "GET /diagnosis/analysis/6/ HTTP/1.1" 200 16044
+INFO 2025-11-20 12:51:01,726 basehttp "GET /static/js/analysis-charts.js HTTP/1.1" 200 9170
+INFO 2025-11-20 15:27:05,886 basehttp "GET /diagnosis/analysis/6/ HTTP/1.1" 200 16044
+INFO 2025-11-20 15:27:05,906 basehttp "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-11-20 15:27:05,908 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-11-20 15:27:05,909 basehttp "GET /static/js/analysis-charts.js HTTP/1.1" 304 0
+INFO 2025-11-20 23:15:37,106 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 23:15:46,484 basehttp "GET / HTTP/1.1" 302 0
+INFO 2025-11-20 23:15:46,625 basehttp "GET /dashboard/ HTTP/1.1" 200 17780
+INFO 2025-11-20 23:15:46,643 basehttp "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-11-20 23:15:46,643 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2025-11-20 23:15:46,898 log Not Found: /favicon.ico
+WARNING 2025-11-20 23:15:46,899 basehttp "GET /favicon.ico HTTP/1.1" 404 4237
+INFO 2025-11-20 23:15:50,506 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-20 23:15:50,521 basehttp "GET /static/js/audio-recorder.js HTTP/1.1" 304 0
+INFO 2025-11-20 23:15:55,010 views Recording 16 uploaded by faheem_cp
+INFO 2025-11-20 23:15:55,106 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-20 23:15:57,846 basehttp "GET /diagnosis/api/status/16/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:15:59,835 basehttp "GET /diagnosis/api/status/16/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:16:01,944 basehttp "GET /diagnosis/api/status/16/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:16:03,954 basehttp "GET /diagnosis/api/status/16/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:16:05,844 basehttp "GET /diagnosis/api/status/16/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:16:07,547 basehttp "GET /diagnosis/api/status/16/ HTTP/1.1" 200 55
+ERROR 2025-11-20 23:16:08,716 detect_stuttering Target transcript generation failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+INFO 2025-11-20 23:16:09,829 basehttp "GET /diagnosis/api/status/16/ HTTP/1.1" 200 147
+ERROR 2025-11-20 23:17:08,858 detect_stuttering Target transcript generation failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+INFO 2025-11-20 23:19:01,294 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-20 23:19:05,880 views Recording 17 uploaded by faheem_cp
+INFO 2025-11-20 23:19:05,882 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+ERROR 2025-11-20 23:19:05,974 detect_stuttering Target transcript generation failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+INFO 2025-11-20 23:19:08,851 basehttp "GET /diagnosis/api/status/17/ HTTP/1.1" 200 147
+ERROR 2025-11-20 23:19:08,934 detect_stuttering Target transcript generation failed: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+WARNING 2025-11-20 23:19:17,275 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-20 23:19:17,275 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 4348
+INFO 2025-11-20 23:19:49,507 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\venv\Lib\site-packages\redis\commands\redismodules.py changed, reloading.
+INFO 2025-11-20 23:19:50,372 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 23:20:00,639 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-20 23:20:04,461 views Recording 18 uploaded by faheem_cp
+INFO 2025-11-20 23:20:04,501 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-20 23:20:06,842 basehttp "GET /diagnosis/api/status/18/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:20:08,857 basehttp "GET /diagnosis/api/status/18/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:20:10,832 basehttp "GET /diagnosis/api/status/18/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:20:12,745 basehttp "GET /diagnosis/api/status/18/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:20:14,856 basehttp "GET /diagnosis/api/status/18/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:20:16,906 basehttp "GET /diagnosis/api/status/18/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:20:18,883 basehttp "GET /diagnosis/api/status/18/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:20:20,845 basehttp "GET /diagnosis/api/status/18/ HTTP/1.1" 200 125
+INFO 2025-11-20 23:20:22,434 basehttp "GET /diagnosis/analysis/7/ HTTP/1.1" 200 16044
+INFO 2025-11-20 23:20:22,447 basehttp "GET /static/js/analysis-charts.js HTTP/1.1" 304 0
+INFO 2025-11-20 23:48:40,707 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 23:48:44,494 basehttp "GET / HTTP/1.1" 200 9045
+INFO 2025-11-20 23:48:47,316 basehttp "GET /login/ HTTP/1.1" 200 7788
+INFO 2025-11-20 23:48:50,227 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-11-20 23:48:50,301 basehttp "GET /dashboard/ HTTP/1.1" 200 17784
+INFO 2025-11-20 23:48:51,501 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-20 23:48:56,391 views Recording 19 uploaded by faheem_cp
+INFO 2025-11-20 23:48:56,529 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-20 23:48:58,851 basehttp "GET /diagnosis/api/status/19/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:49:00,834 basehttp "GET /diagnosis/api/status/19/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:49:02,842 basehttp "GET /diagnosis/api/status/19/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:49:04,848 basehttp "GET /diagnosis/api/status/19/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:49:06,838 basehttp "GET /diagnosis/api/status/19/ HTTP/1.1" 200 55
+ERROR 2025-11-20 23:49:07,247 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-20 23:49:08,838 basehttp "GET /diagnosis/api/status/19/ HTTP/1.1" 200 1597
+INFO 2025-11-20 23:49:51,702 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-20 23:49:56,392 views Recording 20 uploaded by faheem_cp
+INFO 2025-11-20 23:49:56,393 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-20 23:49:58,852 basehttp "GET /diagnosis/api/status/20/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:50:00,854 basehttp "GET /diagnosis/api/status/20/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:50:02,842 basehttp "GET /diagnosis/api/status/20/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:50:04,857 basehttp "GET /diagnosis/api/status/20/ HTTP/1.1" 200 55
+ERROR 2025-11-20 23:50:06,206 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-20 23:50:06,432 basehttp "GET /diagnosis/api/status/20/ HTTP/1.1" 200 1597
+ERROR 2025-11-20 23:50:07,450 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-20 23:51:07,182 autoreload Watching for file changes with StatReloader
+INFO 2025-11-20 23:51:10,449 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-20 23:51:16,139 views Recording 21 uploaded by faheem_cp
+INFO 2025-11-20 23:51:16,286 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-20 23:51:18,340 basehttp "GET /diagnosis/api/status/21/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:51:20,886 basehttp "GET /diagnosis/api/status/21/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:51:22,847 basehttp "GET /diagnosis/api/status/21/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:51:24,626 basehttp "GET /diagnosis/api/status/21/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:51:26,873 basehttp "GET /diagnosis/api/status/21/ HTTP/1.1" 200 55
+INFO 2025-11-20 23:51:28,346 basehttp "GET /diagnosis/api/status/21/ HTTP/1.1" 200 125
+INFO 2025-11-20 23:51:29,943 basehttp "GET /diagnosis/analysis/9/ HTTP/1.1" 200 16044
+INFO 2025-11-21 10:41:28,765 autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 10:41:36,919 basehttp "GET / HTTP/1.1" 302 0
+INFO 2025-11-21 10:41:37,162 basehttp "GET /dashboard/ HTTP/1.1" 200 17795
+INFO 2025-11-21 10:41:37,345 basehttp "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-11-21 10:41:37,350 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2025-11-21 10:41:38,102 log Not Found: /favicon.ico
+WARNING 2025-11-21 10:41:38,102 basehttp "GET /favicon.ico HTTP/1.1" 404 3494
+INFO 2025-11-21 13:54:16,165 autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 13:54:30,735 basehttp "GET / HTTP/1.1" 302 0
+INFO 2025-11-21 13:54:32,308 basehttp "GET /dashboard/ HTTP/1.1" 200 17801
+INFO 2025-11-21 13:54:32,895 basehttp "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-11-21 13:54:32,899 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2025-11-21 13:54:33,459 log Not Found: /favicon.ico
+WARNING 2025-11-21 13:54:33,462 basehttp "GET /favicon.ico HTTP/1.1" 404 4237
+INFO 2025-11-21 13:54:40,940 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-21 13:54:40,999 basehttp "GET /static/js/audio-recorder.js HTTP/1.1" 304 0
+INFO 2025-11-21 13:55:06,189 basehttp "GET / HTTP/1.1" 302 0
+INFO 2025-11-21 13:55:06,431 basehttp "GET /dashboard/ HTTP/1.1" 200 17801
+INFO 2025-11-21 13:55:42,020 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-21 13:55:54,979 views Recording 22 uploaded by faheem_cp
+INFO 2025-11-21 13:55:55,361 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-21 13:55:57,541 basehttp "GET /diagnosis/api/status/22/ HTTP/1.1" 200 55
+INFO 2025-11-21 13:56:00,146 basehttp "GET /diagnosis/api/status/22/ HTTP/1.1" 200 55
+INFO 2025-11-21 13:56:02,169 basehttp "GET /diagnosis/api/status/22/ HTTP/1.1" 200 55
+INFO 2025-11-21 13:56:04,066 basehttp "GET /diagnosis/api/status/22/ HTTP/1.1" 200 55
+INFO 2025-11-21 13:56:06,135 basehttp "GET /diagnosis/api/status/22/ HTTP/1.1" 200 126
+INFO 2025-11-21 13:56:07,881 basehttp "GET /diagnosis/analysis/12/ HTTP/1.1" 200 16044
+INFO 2025-11-21 13:56:07,908 basehttp "GET /static/js/analysis-charts.js HTTP/1.1" 304 0
+INFO 2025-11-21 13:56:13,046 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-21 13:56:38,564 views Recording 23 uploaded by faheem_cp
+INFO 2025-11-21 13:56:38,568 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+ERROR 2025-11-21 13:56:38,975 detect_stuttering Target transcript generation failed: Error opening 'C:\\Users\\Faheem\\Desktop\\AI\\slaq-version-d\\media\\recordings\\1\\2025\\11\\recording_1763713598379.webm': Format not recognised.
+INFO 2025-11-21 13:56:40,772 basehttp "GET /diagnosis/api/status/23/ HTTP/1.1" 200 221
+ERROR 2025-11-21 13:58:42,479 detect_stuttering Target transcript generation failed: Error opening 'C:\\Users\\Faheem\\Desktop\\AI\\slaq-version-d\\media\\recordings\\1\\2025\\11\\recording_1763713598379.webm': Format not recognised.
+ERROR 2025-11-21 14:00:42,865 detect_stuttering Target transcript generation failed: Error opening 'C:\\Users\\Faheem\\Desktop\\AI\\slaq-version-d\\media\\recordings\\1\\2025\\11\\recording_1763713598379.webm': Format not recognised.
+ERROR 2025-11-21 14:03:43,202 detect_stuttering Target transcript generation failed: Error opening 'C:\\Users\\Faheem\\Desktop\\AI\\slaq-version-d\\media\\recordings\\1\\2025\\11\\recording_1763713598379.webm': Format not recognised.
+INFO 2025-11-21 14:04:01,951 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\slaq_project\settings.py changed, reloading.
+INFO 2025-11-21 14:04:06,369 autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 14:06:41,094 views Recording 24 uploaded by faheem_cp
+INFO 2025-11-21 14:06:41,567 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+ERROR 2025-11-21 14:06:42,040 detect_stuttering Target transcript generation failed: Error opening 'C:\\Users\\Faheem\\Desktop\\AI\\slaq-version-d\\media\\recordings\\1\\2025\\11\\recording_1763714200796.webm': Format not recognised.
+INFO 2025-11-21 14:06:44,174 basehttp "GET /diagnosis/api/status/24/ HTTP/1.1" 200 221
+ERROR 2025-11-21 14:07:42,428 detect_stuttering Target transcript generation failed: Error opening 'C:\\Users\\Faheem\\Desktop\\AI\\slaq-version-d\\media\\recordings\\1\\2025\\11\\recording_1763714200796.webm': Format not recognised.
+INFO 2025-11-21 14:07:56,739 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\tasks.py changed, reloading.
+INFO 2025-11-21 14:08:00,115 autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 14:08:21,247 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\slaq_project\settings.py changed, reloading.
+INFO 2025-11-21 14:08:25,392 autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 14:08:53,620 autoreload Watching for file changes with StatReloader
+INFO 2025-11-21 14:09:02,234 basehttp "GET / HTTP/1.1" 302 0
+INFO 2025-11-21 14:09:02,666 basehttp "GET /dashboard/ HTTP/1.1" 200 17782
+INFO 2025-11-21 14:09:06,231 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-21 14:09:22,798 views Recording 25 uploaded by faheem_cp
+INFO 2025-11-21 14:09:23,030 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-21 14:09:26,139 basehttp "GET /diagnosis/api/status/25/ HTTP/1.1" 200 55
+INFO 2025-11-21 14:09:28,139 basehttp "GET /diagnosis/api/status/25/ HTTP/1.1" 200 93
+INFO 2025-11-21 14:33:58,838 views Recording 26 uploaded by faheem_cp
+INFO 2025-11-21 14:33:58,855 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-21 14:34:00,992 basehttp "GET /diagnosis/api/status/26/ HTTP/1.1" 200 93
+INFO 2025-11-22 11:15:13,572 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:15:25,784 basehttp "GET / HTTP/1.1" 302 0
+INFO 2025-11-22 11:15:26,257 basehttp "GET /dashboard/ HTTP/1.1" 200 17760
+INFO 2025-11-22 11:15:26,303 basehttp "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-11-22 11:15:26,307 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2025-11-22 11:15:26,725 log Not Found: /favicon.ico
+WARNING 2025-11-22 11:15:26,726 basehttp "GET /favicon.ico HTTP/1.1" 404 4237
+INFO 2025-11-22 11:15:33,948 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 106605
+INFO 2025-11-22 11:15:37,726 basehttp "GET /diagnosis/recordings/17/ HTTP/1.1" 200 10809
+INFO 2025-11-22 11:15:37,919 basehttp "GET /media/recordings/1/2025/11/the_3_ways_people_stutter_stuttering_slp_teacher_DRMI3j4.mp3 HTTP/1.1" 200 279751
+WARNING 2025-11-22 11:15:40,293 log Not Found: /favicon.ico
+WARNING 2025-11-22 11:15:40,294 basehttp "GET /favicon.ico HTTP/1.1" 404 4237
+INFO 2025-11-22 11:15:42,878 basehttp "GET /diagnosis/recordings/17/ HTTP/1.1" 200 10809
+WARNING 2025-11-22 11:15:43,778 log Not Found: /favicon.ico
+WARNING 2025-11-22 11:15:43,780 basehttp "GET /favicon.ico HTTP/1.1" 404 4237
+INFO 2025-11-22 11:15:47,987 basehttp "GET /diagnosis/recordings/17/ HTTP/1.1" 200 10809
+INFO 2025-11-22 11:16:59,300 basehttp "POST /diagnosis/recordings/17/delete/ HTTP/1.1" 302 0
+INFO 2025-11-22 11:16:59,384 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 103940
+INFO 2025-11-22 11:17:05,643 basehttp "POST /diagnosis/recordings/26/delete/ HTTP/1.1" 302 0
+INFO 2025-11-22 11:17:05,717 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 100014
+INFO 2025-11-22 11:17:07,397 basehttp "POST /diagnosis/recordings/25/delete/ HTTP/1.1" 302 0
+INFO 2025-11-22 11:17:07,477 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 96089
+INFO 2025-11-22 11:17:09,423 basehttp "POST /diagnosis/recordings/24/delete/ HTTP/1.1" 302 0
+INFO 2025-11-22 11:17:09,496 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 92164
+INFO 2025-11-22 11:17:15,589 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-22 11:17:15,617 basehttp "GET /static/js/audio-recorder.js HTTP/1.1" 200 15429
+INFO 2025-11-22 11:17:43,723 views Recording 27 uploaded by faheem_cp
+INFO 2025-11-22 11:17:43,860 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-22 11:17:45,907 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:17:47,918 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:17:49,919 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:17:52,034 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:17:53,927 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:17:55,929 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:17:57,929 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:17:59,921 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:18:01,927 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:18:03,906 basehttp "GET /diagnosis/api/status/27/ HTTP/1.1" 200 126
+INFO 2025-11-22 11:18:05,498 basehttp "GET /diagnosis/analysis/13/ HTTP/1.1" 200 16168
+INFO 2025-11-22 11:18:05,531 basehttp "GET /static/js/analysis-charts.js HTTP/1.1" 200 9170
+INFO 2025-11-22 11:19:45,994 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+WARNING 2025-11-22 11:20:00,952 log Bad Request: /diagnosis/upload/
+WARNING 2025-11-22 11:20:00,953 basehttp "POST /diagnosis/upload/ HTTP/1.1" 400 72
+WARNING 2025-11-22 11:20:08,207 log Bad Request: /diagnosis/upload/
+WARNING 2025-11-22 11:20:08,208 basehttp "POST /diagnosis/upload/ HTTP/1.1" 400 72
+WARNING 2025-11-22 11:22:24,926 log Bad Request: /diagnosis/upload/
+WARNING 2025-11-22 11:22:24,926 basehttp "POST /diagnosis/upload/ HTTP/1.1" 400 72
+INFO 2025-11-22 11:22:46,904 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\views.py changed, reloading.
+INFO 2025-11-22 11:22:47,868 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:23:15,499 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\views.py changed, reloading.
+INFO 2025-11-22 11:23:15,987 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:23:43,636 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:23:59,068 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\views.py changed, reloading.
+INFO 2025-11-22 11:23:59,517 autoreload Watching for file changes with StatReloader
+WARNING 2025-11-22 11:24:05,371 views Rejected upload: ext=.mp4, mime=audio/mp4
+WARNING 2025-11-22 11:24:05,373 log Bad Request: /diagnosis/upload/
+WARNING 2025-11-22 11:24:05,373 basehttp "POST /diagnosis/upload/ HTTP/1.1" 400 72
+WARNING 2025-11-22 11:24:11,975 views Rejected upload: ext=.mp4, mime=audio/mp4
+WARNING 2025-11-22 11:24:11,976 log Bad Request: /diagnosis/upload/
+WARNING 2025-11-22 11:24:11,976 basehttp "POST /diagnosis/upload/ HTTP/1.1" 400 72
+WARNING 2025-11-22 11:24:32,697 views Rejected upload: ext=.mp4, mime=audio/mp4
+WARNING 2025-11-22 11:24:32,697 log Bad Request: /diagnosis/upload/
+WARNING 2025-11-22 11:24:32,697 basehttp "POST /diagnosis/upload/ HTTP/1.1" 400 72
+INFO 2025-11-22 11:24:58,604 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\views.py changed, reloading.
+INFO 2025-11-22 11:24:59,298 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:25:06,004 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\views.py changed, reloading.
+INFO 2025-11-22 11:25:06,752 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:25:09,194 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+WARNING 2025-11-22 11:25:17,940 views Rejected upload: ext=.mp4, mime=audio/mp4
+WARNING 2025-11-22 11:25:17,941 log Bad Request: /diagnosis/upload/
+WARNING 2025-11-22 11:25:17,941 basehttp "POST /diagnosis/upload/ HTTP/1.1" 400 72
+INFO 2025-11-22 11:26:37,221 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\views.py changed, reloading.
+INFO 2025-11-22 11:26:38,335 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:28:30,082 views Recording 28 uploaded by faheem_cp
+INFO 2025-11-22 11:28:30,271 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-22 11:28:32,321 basehttp "GET /diagnosis/api/status/28/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:28:34,308 basehttp "GET /diagnosis/api/status/28/ HTTP/1.1" 200 93
+INFO 2025-11-22 11:29:57,886 views Recording 29 uploaded by faheem_cp
+INFO 2025-11-22 11:29:57,890 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-22 11:29:59,935 basehttp "GET /diagnosis/api/status/29/ HTTP/1.1" 200 93
+INFO 2025-11-22 11:30:06,280 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-22 11:30:12,065 views Recording 30 uploaded by faheem_cp
+INFO 2025-11-22 11:30:12,068 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-22 11:30:14,107 basehttp "GET /diagnosis/api/status/30/ HTTP/1.1" 200 93
+INFO 2025-11-22 11:30:32,474 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\views.py changed, reloading.
+INFO 2025-11-22 11:30:33,175 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:31:43,659 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\tasks.py changed, reloading.
+INFO 2025-11-22 11:31:44,311 autoreload Watching for file changes with StatReloader
+INFO 2025-11-22 11:33:31,435 views Recording 31 uploaded by faheem_cp
+INFO 2025-11-22 11:33:31,648 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-22 11:33:33,696 basehttp "GET /diagnosis/api/status/31/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:33:35,995 basehttp "GET /diagnosis/api/status/31/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:33:37,701 basehttp "GET /diagnosis/api/status/31/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:33:39,696 basehttp "GET /diagnosis/api/status/31/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:33:42,602 basehttp "GET /diagnosis/api/status/31/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:33:43,686 basehttp "GET /diagnosis/api/status/31/ HTTP/1.1" 200 55
+INFO 2025-11-22 11:33:45,693 basehttp "GET /diagnosis/api/status/31/ HTTP/1.1" 200 122
+INFO 2025-11-22 11:33:47,497 basehttp "GET /diagnosis/analysis/14/ HTTP/1.1" 200 16283
+INFO 2025-11-22 11:33:59,624 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 111693
+INFO 2025-11-22 11:34:03,790 basehttp "GET /diagnosis/recordings/27/ HTTP/1.1" 200 12076
+INFO 2025-11-22 11:34:03,921 basehttp "GET /media/recordings/1/2025/11/the_3_ways_people_stutter_stuttering_slp_teacher_6T5pvcC.mp3 HTTP/1.1" 200 279751
+INFO 2025-11-22 11:34:05,440 basehttp "GET /diagnosis/analysis/13/ HTTP/1.1" 200 16168
+INFO 2025-11-22 11:34:51,891 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\tasks.py changed, reloading.
+INFO 2025-11-22 11:34:52,736 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 14:30:41,908 autoreload Watching for file changes with StatReloader
+ERROR 2025-11-25 14:30:44,924 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+ERROR 2025-11-25 14:30:45,304 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-25 14:30:50,849 basehttp "GET / HTTP/1.1" 200 9045
+INFO 2025-11-25 14:30:51,197 basehttp "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-11-25 14:30:51,206 basehttp "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2025-11-25 14:30:51,542 log Not Found: /favicon.ico
+WARNING 2025-11-25 14:30:51,543 basehttp "GET /favicon.ico HTTP/1.1" 404 4237
+INFO 2025-11-25 14:30:53,422 basehttp "GET /login/ HTTP/1.1" 200 7788
+INFO 2025-11-25 14:30:56,990 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-11-25 14:30:57,064 basehttp "GET /dashboard/ HTTP/1.1" 200 17686
+INFO 2025-11-25 14:31:00,046 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-25 14:31:00,060 basehttp "GET /static/js/audio-recorder.js HTTP/1.1" 304 0
+INFO 2025-11-25 14:31:10,957 views Recording 32 uploaded by faheem_cp
+INFO 2025-11-25 14:31:11,092 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+ERROR 2025-11-25 14:31:11,405 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-25 14:31:13,139 basehttp "GET /diagnosis/api/status/32/ HTTP/1.1" 200 1597
+ERROR 2025-11-25 14:32:11,810 detect_stuttering Target transcript generation failed: Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, and 7 on all platforms, and 8 on Mac and Linux.
+          2. The PyTorch version (2.9.1+cpu) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core8.dll
+FFmpeg version 7: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core7.dll
+FFmpeg version 6: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core6.dll
+FFmpeg version 5: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core5.dll
+FFmpeg version 4: Could not load this library: C:\Users\Faheem\AppData\Local\Programs\Python\Python310\Lib\site-packages\torchcodec\libtorchcodec_core4.dll
+[end of libtorchcodec loading traceback].
+INFO 2025-11-25 14:32:59,286 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\venv\Lib\site-packages\torch\distributions\relaxed_bernoulli.py changed, reloading.
+INFO 2025-11-25 14:33:00,256 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 14:33:55,474 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 14:33:58,442 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-25 14:34:13,517 views Recording 33 uploaded by faheem_cp
+INFO 2025-11-25 14:34:13,575 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-25 14:34:15,639 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:34:18,199 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:34:20,199 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:34:22,197 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:34:24,202 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:34:25,652 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:34:28,240 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:34:30,293 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:34:32,194 basehttp "GET /diagnosis/api/status/33/ HTTP/1.1" 200 122
+INFO 2025-11-25 14:34:34,351 basehttp "GET /diagnosis/analysis/16/ HTTP/1.1" 200 16702
+INFO 2025-11-25 14:34:34,384 basehttp "GET /static/js/analysis-charts.js HTTP/1.1" 304 0
+INFO 2025-11-25 14:43:57,874 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py changed, reloading.
+INFO 2025-11-25 14:43:58,661 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 14:45:23,106 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\slaq_project\settings.py changed, reloading.
+INFO 2025-11-25 14:45:23,838 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 14:45:34,029 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-25 14:45:38,453 views Recording 34 uploaded by faheem_cp
+INFO 2025-11-25 14:45:38,497 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-25 14:45:41,206 basehttp "GET /diagnosis/api/status/34/ HTTP/1.1" 200 579
+INFO 2025-11-25 14:46:31,944 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-25 14:46:37,636 views Recording 35 uploaded by faheem_cp
+INFO 2025-11-25 14:46:37,637 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-25 14:46:39,686 basehttp "GET /diagnosis/api/status/35/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:46:41,678 basehttp "GET /diagnosis/api/status/35/ HTTP/1.1" 200 579
+INFO 2025-11-25 14:49:21,579 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-25 14:49:24,980 views Recording 36 uploaded by faheem_cp
+INFO 2025-11-25 14:49:24,982 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-25 14:49:27,033 basehttp "GET /diagnosis/api/status/36/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:49:29,028 basehttp "GET /diagnosis/api/status/36/ HTTP/1.1" 200 579
+INFO 2025-11-25 14:52:02,194 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\slaq_project\settings.py changed, reloading.
+INFO 2025-11-25 14:52:03,399 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 14:52:15,148 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\slaq_project\settings.py changed, reloading.
+INFO 2025-11-25 14:52:15,900 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 14:52:30,556 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-25 14:52:33,960 views Recording 37 uploaded by faheem_cp
+INFO 2025-11-25 14:52:34,089 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-25 14:52:36,232 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:39,921 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:40,288 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:42,376 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:44,194 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:46,203 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:48,230 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:50,549 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:52,761 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:54,483 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:56,412 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:52:58,606 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:00,151 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:02,223 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:04,361 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:06,308 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:08,434 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:10,241 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:12,389 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:14,191 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:16,306 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:18,212 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:20,223 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:22,299 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:24,167 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:26,290 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:28,401 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:30,393 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:32,473 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:34,784 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:36,313 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:38,591 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:40,995 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:42,741 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:44,288 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:46,225 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:48,242 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:50,240 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:52,338 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:54,315 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:56,222 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:53:58,244 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:54:00,252 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:54:02,286 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:54:04,240 basehttp "GET /diagnosis/api/status/37/ HTTP/1.1" 200 124
+INFO 2025-11-25 14:54:07,180 basehttp "GET /diagnosis/analysis/17/ HTTP/1.1" 200 16193
+INFO 2025-11-25 14:54:24,407 basehttp "GET /diagnosis/recordings/37/ HTTP/1.1" 200 12074
+INFO 2025-11-25 14:54:24,759 basehttp "GET /media/recordings/1/2025/11/the_3_ways_people_stutter_stuttering_slp_teacher_DRdm39J.mp3 HTTP/1.1" 200 279751
+INFO 2025-11-25 14:54:26,207 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 137851
+INFO 2025-11-25 14:54:30,227 basehttp "GET /diagnosis/recordings/36/ HTTP/1.1" 200 12074
+INFO 2025-11-25 14:54:30,292 basehttp "GET /media/recordings/1/2025/11/the_3_ways_people_stutter_stuttering_slp_teacher_EMH8HRY.mp3 HTTP/1.1" 200 279751
+INFO 2025-11-25 14:54:32,473 basehttp "GET /diagnosis/analysis/18/ HTTP/1.1" 200 16193
+INFO 2025-11-25 14:54:40,277 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 137851
+INFO 2025-11-25 14:54:46,142 basehttp "GET /diagnosis/recordings/27/ HTTP/1.1" 200 12076
+INFO 2025-11-25 14:54:46,213 basehttp "GET /media/recordings/1/2025/11/the_3_ways_people_stutter_stuttering_slp_teacher_6T5pvcC.mp3 HTTP/1.1" 200 279751
+INFO 2025-11-25 14:54:47,834 basehttp "GET /diagnosis/analysis/13/ HTTP/1.1" 200 16168
+INFO 2025-11-25 14:56:16,185 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 138480
+INFO 2025-11-25 14:56:20,468 basehttp "GET /diagnosis/recordings/37/ HTTP/1.1" 200 12074
+INFO 2025-11-25 14:56:20,560 basehttp "GET /media/recordings/1/2025/11/the_3_ways_people_stutter_stuttering_slp_teacher_DRdm39J.mp3 HTTP/1.1" 304 0
+INFO 2025-11-25 14:56:25,656 basehttp "GET /diagnosis/record/ HTTP/1.1" 200 12884
+INFO 2025-11-25 14:56:50,015 views Recording 38 uploaded by faheem_cp
+INFO 2025-11-25 14:56:50,076 basehttp "POST /diagnosis/upload/ HTTP/1.1" 201 100
+INFO 2025-11-25 14:56:52,141 basehttp "GET /diagnosis/api/status/38/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:56:54,159 basehttp "GET /diagnosis/api/status/38/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:56:56,132 basehttp "GET /diagnosis/api/status/38/ HTTP/1.1" 200 55
+INFO 2025-11-25 14:56:56,921 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 142414
+INFO 2025-11-25 14:56:59,298 basehttp "GET /diagnosis/recordings/37/ HTTP/1.1" 200 12074
+INFO 2025-11-25 14:56:59,373 basehttp "GET /media/recordings/1/2025/11/the_3_ways_people_stutter_stuttering_slp_teacher_DRdm39J.mp3 HTTP/1.1" 304 0
+INFO 2025-11-25 14:57:00,473 basehttp "GET /diagnosis/analysis/17/ HTTP/1.1" 200 16193
+INFO 2025-11-25 14:57:33,137 basehttp "GET /diagnosis/recordings/37/ HTTP/1.1" 200 12074
+INFO 2025-11-25 14:57:33,220 basehttp "GET /media/recordings/1/2025/11/the_3_ways_people_stutter_stuttering_slp_teacher_DRdm39J.mp3 HTTP/1.1" 304 0
+INFO 2025-11-25 14:57:34,782 basehttp "GET /diagnosis/recordings/ HTTP/1.1" 200 142414
+INFO 2025-11-25 14:57:37,001 basehttp "GET /diagnosis/recordings/38/ HTTP/1.1" 200 10710
+INFO 2025-11-25 14:57:37,079 basehttp "GET /media/recordings/1/2025/11/recording_1764062809930.mp4 HTTP/1.1" 200 347894
+INFO 2025-11-25 14:57:42,256 basehttp "GET /diagnosis/recordings/38/ HTTP/1.1" 200 10710
+INFO 2025-11-25 14:57:48,313 basehttp "GET /diagnosis/recordings/38/ HTTP/1.1" 200 10710
+INFO 2025-11-25 14:57:54,222 basehttp "GET /diagnosis/recordings/38/ HTTP/1.1" 200 11975
+INFO 2025-11-25 14:59:08,411 basehttp "GET /media/recordings/1/2025/11/recording_1764062809930.mp4 HTTP/1.1" 304 0
+INFO 2025-11-25 14:59:10,172 basehttp "GET /diagnosis/analysis/20/ HTTP/1.1" 200 17732
+INFO 2025-11-25 15:04:18,919 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py changed, reloading.
+INFO 2025-11-25 15:04:20,561 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 15:04:33,454 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\diagnosis\ai_engine\detect_stuttering.py changed, reloading.
+INFO 2025-11-25 15:04:34,171 autoreload Watching for file changes with StatReloader
+INFO 2025-11-25 15:05:13,558 autoreload C:\Users\Faheem\Desktop\AI\slaq-version-d\slaq_project\settings.py changed, reloading.
