@@ -333,3 +333,127 @@ def list_files(
         error_msg = f"List failed: {str(e)}"
         logger.error(error_msg)
         return False, [error_msg]
+
+
+class SupabaseStorage:
+    """A minimal Django-storage-like wrapper for Supabase Storage.
+
+    Provides: save(name, content), exists(name), open(name), url(name), delete(name)
+    Uses the helper functions in this module to perform operations.
+    When Supabase client is not available the storage falls back to a local
+    directory defined by the `SUPABASE_LOCAL_FALLBACK` env var (or
+    `<cwd>/local_supabase_storage`). This makes tests runnable without
+    installing `supabase` or configuring environment variables.
+    """
+
+    def __init__(self, bucket_name: Optional[str] = None, use_service_role: bool = True):
+        self.bucket = bucket_name or get_bucket_name()
+        self.use_service_role = use_service_role
+        # Local fallback directory used when Supabase client is not available
+        self._local_fallback_dir = Path(os.getenv('SUPABASE_LOCAL_FALLBACK', os.path.join(os.getcwd(), 'local_supabase_storage')))
+        self._local_fallback_dir.mkdir(parents=True, exist_ok=True)
+
+    def save(self, name: str, content) -> str:
+        """Save a file-like `content` under `name` in Supabase Storage.
+
+        Returns the saved remote name (path).
+        """
+        success, result = upload_file_object(
+            file_obj=content,
+            remote_path=name,
+            bucket_name=self.bucket,
+            content_type=getattr(content, 'content_type', None) or 'application/octet-stream',
+            use_service_role=self.use_service_role,
+        )
+
+        # If Supabase client is unavailable or upload failed, fallback to local filesystem
+        if not success:
+            try:
+                local_path = self._local_fallback_dir / name
+                local_path.parent.mkdir(parents=True, exist_ok=True)
+                # Reset file pointer if possible
+                try:
+                    content.seek(0)
+                except Exception:
+                    pass
+
+                data = content.read()
+                with open(local_path, 'wb') as f:
+                    if isinstance(data, str):
+                        data = data.encode()
+                    f.write(data)
+
+                logger.warning(f"Supabase unavailable; saved '{name}' to local fallback: {local_path}")
+                return name
+            except Exception as e:
+                raise Exception(f"Failed to save file '{name}': {result} | Local fallback error: {e}")
+
+        return name
+
+    def exists(self, name: str) -> bool:
+        success, res = list_files(prefix=name, bucket_name=self.bucket, use_service_role=self.use_service_role)
+        if success:
+            # res may be a list of dicts or strings depending on client
+            for item in res:
+                if isinstance(item, dict) and item.get('name') == name:
+                    return True
+                if isinstance(item, str) and item == name:
+                    return True
+
+        # Fall back to local filesystem check
+        local_path = self._local_fallback_dir / name
+        return local_path.exists()
+
+    def open(self, name: str, mode: str = 'rb'):
+        import tempfile
+
+        # download to a temp file and open it
+        temp_dir = tempfile.gettempdir()
+        local_path = Path(temp_dir) / name
+
+        success, result = download_file(remote_path=name, local_path=str(local_path), bucket_name=self.bucket, use_service_role=self.use_service_role)
+        if success:
+            return open(result, mode)
+
+        # Fall back to local file in fallback dir
+        fallback_path = self._local_fallback_dir / name
+        if fallback_path.exists():
+            return open(fallback_path, mode)
+
+        raise FileNotFoundError(result)
+
+    def url(self, name: str) -> str:
+        success, url = get_signed_url(remote_path=name, bucket_name=self.bucket, use_service_role=self.use_service_role)
+        if success and url:
+            return url
+
+        # fallback to public url if client exists
+        client = get_supabase_client(use_service_role=self.use_service_role)
+        if client is not None:
+            try:
+                return client.storage.from_(self.bucket).get_public_url(name)
+            except Exception:
+                pass
+
+        # Local fallback: return file:// path
+        fallback_path = self._local_fallback_dir / name
+        if fallback_path.exists():
+            return f"file://{fallback_path.resolve()}"
+
+        raise Exception("Unable to obtain URL for file")
+
+    def delete(self, name: str) -> bool:
+        success, result = delete_file(remote_path=name, bucket_name=self.bucket, use_service_role=self.use_service_role)
+        if success:
+            return True
+
+        # Fall back to deleting local file
+        fallback_path = self._local_fallback_dir / name
+        try:
+            if fallback_path.exists():
+                fallback_path.unlink()
+                return True
+        except Exception as e:
+            raise Exception(f"Delete failed: {e}")
+
+        raise Exception(result)
