@@ -11,15 +11,7 @@ A clean, simplified, and production-ready README for running the full system: Re
 ```sh
 python -m venv venv
 venv\Scripts\activate
-pip install celery 
-pip install dotenv 
-pip install django 
-pip install django_celery_results
-pip install psycopg2-binary
-pip install librosa
-pip install fastdtw
-pip install redis
-
+pip install celery dotenv  django  django_celery_results psycopg2-binary librosa fastdtw redis
 pip install --upgrade pip
 ```
 
