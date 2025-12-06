@@ -1,7 +1,7 @@
 # 🚀 SLAQ AI Speech Diagnosis — Full System Setup Guide
 
 A clean, simplified, and production-ready README for running the full system: Redis, Celery, Django, and AI model downloads.
-
+Whole development using production level resources. 
 ---
 
 # ⚡ 0. Initial Setup
