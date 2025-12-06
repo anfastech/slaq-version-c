@@ -100,7 +100,7 @@ pip install -r requirements.txt
 
 ```sh
 pip install eventlet
-celery -A slaq_project worker --pool=solo -l info -p eventlet
+celery -A slaq_project worker --pool=eventlet -l info
 ```
 
 ---
