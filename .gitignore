@@ -1,5 +1,7 @@
 .env
 
+diagnosis/__pycache__/*
+
 
 # Python
 *.py[cod]
