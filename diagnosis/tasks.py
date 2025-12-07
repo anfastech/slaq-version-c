@@ -136,10 +136,15 @@ def process_audio_recording(self, recording_id, language='english'):
             except Exception:
                 return default
 
+        # Extract and log transcripts for debugging
+        actual_transcript = str(analysis_data.get('actual_transcript', '')).strip()
+        target_transcript = str(analysis_data.get('target_transcript', '')).strip()
+        logger.info(f"📝 Saving transcripts - Actual: {len(actual_transcript)} chars, Target: {len(target_transcript)} chars")
+        
         analysis = AnalysisResult.objects.create(
             recording=recording,
-            actual_transcript=str(analysis_data.get('actual_transcript', '')),
-            target_transcript=str(analysis_data.get('target_transcript', '')),
+            actual_transcript=actual_transcript,
+            target_transcript=target_transcript,
             mismatched_chars=mismatches_safe or [],
             mismatch_percentage=_to_float(analysis_data.get('mismatch_percentage', 0.0)),
             ctc_loss_score=_to_float(analysis_data.get('ctc_loss_score', 0.0)),

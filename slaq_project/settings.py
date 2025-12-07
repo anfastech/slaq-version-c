@@ -164,5 +164,18 @@ STUTTER_THRESHOLDS = {
     'severe_mismatch': 50,
 }
 
+# AI Engine API Configuration
+# Base URL for the external stutter detection API (HuggingFace Space)
+# The /analyze endpoint will be appended automatically in detect_stuttering.py
+STUTTER_API_URL = env('STUTTER_API_URL', default='https://anfastech-slaq-version-c-ai-enginee.hf.space')
+# Timeout for API requests in seconds (default: 5 minutes for long audio files)
+STUTTER_API_TIMEOUT = env.int('STUTTER_API_TIMEOUT', default=300)
+# Default language for analysis if not specified
+DEFAULT_LANGUAGE = env('DEFAULT_LANGUAGE', default='hindi')
+# Maximum retries for API requests
+STUTTER_API_MAX_RETRIES = env.int('STUTTER_API_MAX_RETRIES', default=3)
+# Retry delay in seconds
+STUTTER_API_RETRY_DELAY = env.int('STUTTER_API_RETRY_DELAY', default=5)
+
 
 ACCOUNT_USERNAME_BLACKLIST = ['admin', 'administrator', 'root', 'superuser', 'staff', 'user', 'test', 'username', 'theboss']

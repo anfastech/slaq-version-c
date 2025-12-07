@@ -11,6 +11,10 @@ Supports Indian languages through MMS model:
 - Punjabi, Urdu, Assamese, Odia, Bhojpuri, Maithili, English
 """
 
+# Base API URL for stutter detection
+# Points to slaq-version-c-ai-enginee HuggingFace Space
+API_URL = "https://anfastech-slaq-version-c-ai-enginee.hf.space"
+
 import logging
 import os
 import time
@@ -20,27 +24,35 @@ from typing import Dict, Optional, List, Any
 logger = logging.getLogger(__name__)
 
 
-# Default API URL for stutter detection
-DEFAULT_API_URL = 'https://anfastech-slaq-version-d-ai-test-engine.hf.space/analyze'
-
-
 def get_config() -> Dict[str, Any]:
     """Load configuration from Django settings at runtime."""
     try:
         from django.conf import settings
+        # Get base URL from settings or use default
+        base_url = getattr(settings, 'STUTTER_API_URL', API_URL)
+        # Ensure it ends with /analyze for the analyze endpoint
+        if not base_url.endswith('/analyze'):
+            api_url = base_url.rstrip('/') + '/analyze'
+        else:
+            api_url = base_url
+        
         return {
-            'api_url': getattr(settings, 'STUTTER_API_URL', DEFAULT_API_URL),
+            'api_url': api_url,
             'api_timeout': getattr(settings, 'STUTTER_API_TIMEOUT', 300),
             'default_language': getattr(settings, 'DEFAULT_LANGUAGE', 'hindi'),
             'sample_rate': getattr(settings, 'AUDIO_SAMPLE_RATE', 16000),
+            'max_retries': getattr(settings, 'STUTTER_API_MAX_RETRIES', 3),
+            'retry_delay': getattr(settings, 'STUTTER_API_RETRY_DELAY', 5),
         }
     except Exception:
         # Fallback for standalone usage
         return {
-            'api_url': DEFAULT_API_URL,
+            'api_url': API_URL + '/analyze',
             'api_timeout': 300,
             'default_language': 'hindi',
             'sample_rate': 16000,
+            'max_retries': 3,
+            'retry_delay': 5,
         }
 
 
@@ -123,11 +135,14 @@ class StutterDetector:
         self.api_timeout = config['api_timeout']
         self.default_language = config['default_language']
         self.sample_rate = config['sample_rate']
+        self.max_retries = config['max_retries']
+        self.retry_delay = config['retry_delay']
         
         logger.info(f"✅ StutterDetector initialized")
         logger.info(f"   📡 API URL: {self.api_url}")
         logger.info(f"   🌐 Default Language: {self.default_language}")
         logger.info(f"   ⏱️ Timeout: {self.api_timeout}s")
+        logger.info(f"   🔄 Max Retries: {self.max_retries}")
     
     def _resolve_language(self, language: Optional[str]) -> str:
         """
@@ -231,50 +246,94 @@ class StutterDetector:
             logger.info(f"📋 Size: {file_size:,} bytes")
             logger.info(f"📋 Format: {file_ext}")
             
-            # Prepare and send API request
-            with open(file_path, "rb") as f:
-                files = {"audio": (os.path.basename(file_path), f, self._get_mime_type(file_ext))}
-                data = {
-                    "transcript": proper_transcript if proper_transcript else "",
-                    "language": lang_code,
-                }
-                
-                logger.info(f"📤 Sending request to API...")
-                logger.debug(f"📤 API URL: {self.api_url}")
-                logger.debug(f"📤 Data: {data}")
-                
+            # Prepare and send API request with retry logic
+            result = None
+            last_exception = None
+            
+            for attempt in range(1, self.max_retries + 1):
                 try:
-                    response = requests.post(
-                        self.api_url,
-                        files=files,
-                        data=data,
-                        timeout=self.api_timeout
-                    )
-                    
-                    logger.info(f"📥 Response status: {response.status_code}")
-                    response.raise_for_status()
-                    
-                    result = response.json()
-                    logger.info(f"✅ API response received")
-                    logger.debug(f"✅ Response keys: {list(result.keys()) if isinstance(result, dict) else 'N/A'}")
-                    
-                except requests.exceptions.Timeout:
-                    logger.error(f"❌ API request timed out after {self.api_timeout}s")
-                    raise TimeoutError(f"API request timed out after {self.api_timeout} seconds")
-                    
+                    with open(file_path, "rb") as f:
+                        files = {"audio": (os.path.basename(file_path), f, self._get_mime_type(file_ext))}
+                        data = {
+                            "transcript": proper_transcript if proper_transcript else "",
+                            "language": lang_code,
+                        }
+                        
+                        if attempt > 1:
+                            logger.info(f"📤 Retrying API request (attempt {attempt}/{self.max_retries})...")
+                        else:
+                            logger.info(f"📤 Sending request to API...")
+                        logger.debug(f"📤 API URL: {self.api_url}")
+                        logger.debug(f"📤 Data: {data}")
+                        
+                        response = requests.post(
+                            self.api_url,
+                            files=files,
+                            data=data,
+                            timeout=self.api_timeout
+                        )
+                        
+                        logger.info(f"📥 Response status: {response.status_code}")
+                        response.raise_for_status()
+                        
+                        result = response.json()
+                        logger.info(f"✅ API response received")
+                        logger.debug(f"✅ Response keys: {list(result.keys()) if isinstance(result, dict) else 'N/A'}")
+                        # Log transcript values for debugging
+                        if isinstance(result, dict):
+                            actual = result.get('actual_transcript', '')
+                            target = result.get('target_transcript', '')
+                            logger.info(f"📝 Actual transcript length: {len(actual)} chars")
+                            logger.info(f"📝 Target transcript length: {len(target)} chars")
+                            logger.debug(f"📝 Actual transcript preview: {actual[:100] if actual else '(empty)'}")
+                            logger.debug(f"📝 Target transcript preview: {target[:100] if target else '(empty)'}")
+                        break  # Success, exit retry loop
+                        
+                except requests.exceptions.Timeout as e:
+                    last_exception = e
+                    logger.warning(f"⚠️ API request timed out after {self.api_timeout}s (attempt {attempt}/{self.max_retries})")
+                    if attempt < self.max_retries:
+                        logger.info(f"⏳ Waiting {self.retry_delay}s before retry...")
+                        time.sleep(self.retry_delay)
+                    else:
+                        logger.error(f"❌ All retry attempts exhausted")
+                        raise TimeoutError(f"API request timed out after {self.api_timeout} seconds (tried {self.max_retries} times)")
+                        
                 except requests.exceptions.ConnectionError as e:
-                    logger.error(f"❌ Failed to connect to API: {e}")
-                    raise ConnectionError(f"Failed to connect to analysis API: {e}")
-                    
+                    last_exception = e
+                    logger.warning(f"⚠️ Failed to connect to API: {e} (attempt {attempt}/{self.max_retries})")
+                    if attempt < self.max_retries:
+                        logger.info(f"⏳ Waiting {self.retry_delay}s before retry...")
+                        time.sleep(self.retry_delay)
+                    else:
+                        logger.error(f"❌ All retry attempts exhausted")
+                        raise ConnectionError(f"Failed to connect to analysis API after {self.max_retries} attempts: {e}")
+                        
                 except requests.exceptions.HTTPError as e:
-                    logger.error(f"❌ API returned error: {response.status_code}")
-                    if response.text:
-                        logger.error(f"❌ Response: {response.text[:500]}")
-                    raise RuntimeError(f"API error ({response.status_code}): {response.text[:200]}")
-                    
+                    # Don't retry on HTTP errors (4xx, 5xx) unless it's a 503 (service unavailable)
+                    status_code = response.status_code if 'response' in locals() else None
+                    if status_code == 503 and attempt < self.max_retries:
+                        logger.warning(f"⚠️ API returned 503 (Service Unavailable) - retrying (attempt {attempt}/{self.max_retries})")
+                        time.sleep(self.retry_delay)
+                        continue
+                    else:
+                        logger.error(f"❌ API returned error: {status_code}")
+                        if 'response' in locals() and response.text:
+                            logger.error(f"❌ Response: {response.text[:500]}")
+                        raise RuntimeError(f"API error ({status_code}): {response.text[:200] if 'response' in locals() and response.text else 'Unknown error'}")
+                        
                 except requests.exceptions.RequestException as e:
-                    logger.error(f"❌ Request failed: {type(e).__name__}: {e}")
-                    raise
+                    last_exception = e
+                    logger.warning(f"⚠️ Request failed: {type(e).__name__}: {e} (attempt {attempt}/{self.max_retries})")
+                    if attempt < self.max_retries:
+                        logger.info(f"⏳ Waiting {self.retry_delay}s before retry...")
+                        time.sleep(self.retry_delay)
+                    else:
+                        logger.error(f"❌ All retry attempts exhausted")
+                        raise RuntimeError(f"Request failed after {self.max_retries} attempts: {e}")
+            
+            if result is None:
+                raise RuntimeError(f"Failed to get response from API after {self.max_retries} attempts")
             
             # Calculate analysis duration
             analysis_duration = time.time() - start_time
@@ -339,11 +398,21 @@ class StutterDetector:
                 if isinstance(evt, dict)
             )
         
+        # Extract transcripts with proper fallback
+        actual_transcript = str(api_result.get('actual_transcript', '')).strip()
+        target_transcript = str(api_result.get('target_transcript', '')).strip()
+        
+        # If target_transcript is empty from API, use proper_transcript if provided
+        if not target_transcript and proper_transcript:
+            target_transcript = proper_transcript.strip()
+        
+        # Log for debugging
+        logger.info(f"📝 Final transcripts - Actual: {len(actual_transcript)} chars, Target: {len(target_transcript)} chars")
+        
         return {
             # Transcription
-            'actual_transcript': str(api_result.get('actual_transcript', '')),
-            'target_transcript': str(api_result.get('target_transcript', '') or 
-                                    (proper_transcript.upper() if proper_transcript else '')),
+            'actual_transcript': actual_transcript,
+            'target_transcript': target_transcript,
             
             # Mismatch analysis
             'mismatched_chars': api_result.get('mismatched_chars', []),
@@ -420,6 +489,63 @@ class StutterDetector:
             return float(value)
         except (TypeError, ValueError):
             return default
+    
+    def check_api_health(self) -> Dict[str, Any]:
+        """
+        Check if the API endpoint is healthy and accessible.
+        
+        Returns:
+            Dictionary with health status information:
+            - healthy: bool - Whether the API is accessible
+            - status_code: int - HTTP status code
+            - message: str - Status message
+            - response_time: float - Response time in seconds
+        """
+        health_url = self.api_url.replace('/analyze', '/health')
+        if health_url == self.api_url:  # If no /health endpoint, try root
+            health_url = self.api_url.rsplit('/analyze', 1)[0] + '/health'
+        
+        try:
+            start_time = time.time()
+            response = requests.get(health_url, timeout=10)
+            response_time = time.time() - start_time
+            
+            if response.status_code == 200:
+                return {
+                    'healthy': True,
+                    'status_code': response.status_code,
+                    'message': 'API is healthy and accessible',
+                    'response_time': round(response_time, 2),
+                    'details': response.json() if response.text else {}
+                }
+            else:
+                return {
+                    'healthy': False,
+                    'status_code': response.status_code,
+                    'message': f'API returned status {response.status_code}',
+                    'response_time': round(response_time, 2)
+                }
+        except requests.exceptions.Timeout:
+            return {
+                'healthy': False,
+                'status_code': None,
+                'message': 'Health check timed out',
+                'response_time': None
+            }
+        except requests.exceptions.ConnectionError as e:
+            return {
+                'healthy': False,
+                'status_code': None,
+                'message': f'Failed to connect to API: {e}',
+                'response_time': None
+            }
+        except Exception as e:
+            return {
+                'healthy': False,
+                'status_code': None,
+                'message': f'Health check failed: {e}',
+                'response_time': None
+            }
 
 
 # Alias for backward compatibility with model_loader.py

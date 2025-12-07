@@ -1,3 +1,6 @@
+.env
+
+
 # Python
 *.py[cod]
 *$py.class
@@ -33,7 +36,8 @@ db.sqlite3-journal
 /static_root
 
 # Environment Variables
-.env
+
+.env.example
 .env.local
 .env.*.local
 .venv
