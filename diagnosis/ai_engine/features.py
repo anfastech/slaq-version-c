@@ -1,71 +1,140 @@
-import torch
-import torchaudio
+"""
+Feature extraction via AI Engine API
+
+This module provides feature extraction by calling the external AI Engine API.
+All ML model processing is handled by the AI Engine service, not locally.
+
+Architecture: Django App (Client) → AI Engine API (Service)
+"""
+import logging
+import os
+import requests
 import numpy as np
-from transformers import BertTokenizer, BertModel, Wav2Vec2FeatureExtractor
+from typing import Dict, Any, Optional
+
+logger = logging.getLogger(__name__)
 
 
-def _get_sample_rate():
-    """Get sample rate from Django settings."""
+def _get_api_config() -> Dict[str, Any]:
+    """Get API configuration from Django settings."""
     try:
         from django.conf import settings
-        return getattr(settings, 'AUDIO_SAMPLE_RATE', 16000)
+        base_url = getattr(settings, 'STUTTER_API_URL', 'https://anfastech-slaq-version-c-ai-enginee.hf.space')
+        return {
+            'api_url': base_url.rstrip('/'),
+            'api_timeout': getattr(settings, 'STUTTER_API_TIMEOUT', 300),
+            'sample_rate': getattr(settings, 'AUDIO_SAMPLE_RATE', 16000),
+        }
     except Exception:
-        return 16000
+        return {
+            'api_url': 'https://anfastech-slaq-version-c-ai-enginee.hf.space',
+            'api_timeout': 300,
+            'sample_rate': 16000,
+        }
 
 
-class HybridFeatureExtractor:
+class ASRFeatureExtractor:
     """
-    Core Part Extracted: utils.py & train.py
-    Combines Acoustic features (Wav2Vec2) with Linguistic features (BERT).
+    Feature extractor that calls the AI Engine API for ASR features.
     
-    Configuration is loaded from Django settings at runtime.
+    This is a client wrapper that delegates all ML processing to the AI Engine service.
+    No local models are loaded - all processing happens via API calls.
+    
+    Model: ai4bharat/indicwav2vec-hindi (handled by AI Engine service)
     """
+    
     def __init__(self):
-        self.sample_rate = _get_sample_rate()
+        """Initialize API client - no local models loaded."""
+        self.config = _get_api_config()
+        self.api_url = self.config['api_url']
+        self.api_timeout = self.config['api_timeout']
+        self.sample_rate = self.config['sample_rate']
+        logger.info(f"✅ ASRFeatureExtractor initialized (API client mode)")
+        logger.info(f"   📡 API URL: {self.api_url}")
+    
+    def get_transcription_features(
+        self, 
+        audio_path: str, 
+        transcript: Optional[str] = None,
+        language: str = 'hindi'
+    ) -> Dict[str, Any]:
+        """
+        Get transcription features from AI Engine API.
         
-        # Text Encoder
-        self.bert_tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-        self.bert_model = BertModel.from_pretrained('bert-base-uncased')
-        
-        # Audio Encoder
-        self.audio_extractor = Wav2Vec2FeatureExtractor.from_pretrained("facebook/wav2vec2-base-960h")
-
-    def get_hybrid_features(self, audio_path, transcript):
-        # 1. Get Text Embeddings (Context)
-        inputs = self.bert_tokenizer(transcript, return_tensors="pt", padding=True, truncation=True)
-        with torch.no_grad():
-            text_outputs = self.bert_model(**inputs)
-        # Use CLS token for sentence-level context (Shape: 768)
-        text_embedding = text_outputs.last_hidden_state[:, 0, :].numpy()
-
-        # 2. Get Audio Matrix (Signal)
-        waveform, sr = torchaudio.load(audio_path)
-        if sr != self.sample_rate:
-            resampler = torchaudio.transforms.Resample(sr, self.sample_rate)
-            waveform = resampler(waveform)
+        Args:
+            audio_path: Path to audio file
+            transcript: Optional expected transcript
+            language: Language code (default: 'hindi')
             
-        # Extract features (Shape: 1, TimeSteps)
-        audio_features = self.audio_extractor(
-            waveform.squeeze().numpy(), 
-            sampling_rate=self.sample_rate, 
-            return_tensors="np"
-        ).input_values
-        audio_matrix = audio_features.squeeze()
+        Returns:
+            Dictionary containing:
+            - transcript: Transcribed text
+            - confidence: Average confidence score
+            - word_timestamps: Word-level timestamps
+            - frame_confidence: Per-frame confidence (if available)
+        """
+        try:
+            # Call AI Engine API for transcription
+            with open(audio_path, "rb") as f:
+                files = {"audio": (os.path.basename(audio_path), f, "audio/wav")}
+                data = {
+                    "transcript": transcript if transcript else "",
+                    "language": language,
+                }
+                
+                response = requests.post(
+                    f"{self.api_url}/analyze",
+                    files=files,
+                    data=data,
+                    timeout=self.api_timeout
+                )
+                response.raise_for_status()
+                result = response.json()
+            
+            # Extract features from API response
+            return {
+                'transcript': result.get('actual_transcript', ''),
+                'confidence': result.get('confidence_score', 0.0),
+                'word_timestamps': result.get('stutter_timestamps', []),
+                'ctc_loss': result.get('ctc_loss_score', 0.0),
+                'model_version': result.get('model_version', 'unknown')
+            }
+        except Exception as e:
+            logger.error(f"❌ Error getting transcription features from API: {e}")
+            raise
+    
+    def get_audio_features(self, audio_path: str) -> Dict[str, Any]:
+        """
+        Get audio features from AI Engine API.
+        
+        This is a simplified version that returns basic audio metadata.
+        For full feature extraction, use get_transcription_features().
+        
+        Args:
+            audio_path: Path to audio file
+            
+        Returns:
+            Dictionary with audio metadata and API response
+        """
+        try:
+            # Get transcription features (includes audio processing)
+            features = self.get_transcription_features(audio_path)
+            
+            # Add audio metadata
+            import librosa
+            audio, sr = librosa.load(audio_path, sr=self.sample_rate)
+            duration = len(audio) / sr
+            
+            return {
+                **features,
+                'duration': duration,
+                'sample_rate': sr,
+                'num_samples': len(audio)
+            }
+        except Exception as e:
+            logger.error(f"❌ Error getting audio features: {e}")
+            raise
 
-        # 3. Concatenate (The "Secret Sauce")
-        # We tile the text embedding to match the audio length so every audio frame 
-        # "knows" the context of the sentence.
-        
-        time_steps = audio_matrix.shape[0]
-        
-        # If audio is too long/short, we might need to adjust, but following the old repo logic:
-        # Reshape audio to (Time, 1)
-        audio_col = audio_matrix.reshape(-1, 1)
-        
-        # Tile text to (Time, 768)
-        text_tiled = np.tile(text_embedding, (time_steps, 1))
-        
-        # Final Vector: (Time, 769) -> [Audio_Amplitude, Bert_Dim_1, ..., Bert_Dim_768]
-        combined_features = np.concatenate((audio_col, text_tiled), axis=1)
-        
-        return combined_features
+
+# Alias for backward compatibility
+HybridFeatureExtractor = ASRFeatureExtractor
